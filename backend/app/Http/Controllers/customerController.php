@@ -28,6 +28,6 @@ class customerController extends Controller
     }
     public function destroy( Customer $customer){
         $customer->delete();
-        return response()->json('costumer deleted');
+      
     }
 }
