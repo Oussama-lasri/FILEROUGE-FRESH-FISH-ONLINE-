@@ -35,8 +35,16 @@
             </li>
         </ul>
     </div>
-    <div class="bg-myblue text-gray-100 py-6 px-6 shadow md:flex justify-between items-center">
-
+    <div class="bg-myblue text-gray-100 py-3 px-6 shadow md:flex justify-center items-center">
+        <h3 class="mr-10 ">New &amp; Special Offers</h3>
+        <ul class="flex justify-center">
+            <li class="border-l-2 px-3 hover:text-gray-300"><a href="">categorie 1</a></li>
+            <li class="border-l-2 px-3 hover:text-gray-300"><a href="">categorie 3</a></li>
+            <li class="border-l-2 px-3 hover:text-gray-300"><a href="">categorie 2</a></li>
+            <li class="border-l-2 px-3 hover:text-gray-300"><a href="">categorie 4</a></li>
+            <li class="border-l-2 px-3 hover:text-gray-300"><a href="">categorie 5</a></li>
+            <li class="border-l-2 px-3 hover:text-gray-300"><a href="">categorie 7</a></li>
+        </ul>
     </div>
 </template>
 
