@@ -10,7 +10,10 @@ export default {
         'myblue': '#0076D4'
       },
       backgroundImage: {
-        'bgHome': "url('/img/footer-texture.png')",
+        'home': "url('./src/assets/images/home.png')",
+      },
+      height: {
+        '100,':'100%',
       }
     },
   },
