@@ -8,6 +8,9 @@ export default {
     extend: {
       colors:{
         'myblue': '#0076D4'
+      },
+      backgroundImage: {
+        'bgHome': "url('/img/footer-texture.png')",
       }
     },
   },

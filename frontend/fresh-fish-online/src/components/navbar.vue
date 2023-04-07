@@ -46,6 +46,15 @@
             <li class="border-l-2 px-3 hover:text-gray-300"><a href="">categorie 7</a></li>
         </ul>
     </div>
+    <div class="bg-white text-gray-950 py-3 px-6 shadow md:flex justify-center items-center">
+        <ul class="flex justify-between ">
+            <li class="text-gray-700 px-3 capitalize hover:text-black"><a href="">Recipes</a></li>
+            <li class="text-gray-700 px-3 capitalize hover:text-black"><a href="">Blog</a></li>
+            <li class="text-gray-700 px-3 capitalize hover:text-black"><a href="">our story</a></li>
+            <li class="text-gray-700 px-3 capitalize hover:text-black"><a href="">Contact</a></li>
+        </ul>
+    </div>
+
 </template>
 
 <script>
