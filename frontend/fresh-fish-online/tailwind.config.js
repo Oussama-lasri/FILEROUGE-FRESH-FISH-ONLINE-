@@ -11,6 +11,7 @@ export default {
       },
       backgroundImage: {
         'home': "url('./src/assets/images/home.png')",
+        'joinSection': "url('./src/assets/images/7440314 1.png')",
       },
       height: {
         '100,':'100%',

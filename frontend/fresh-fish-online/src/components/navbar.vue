@@ -3,7 +3,7 @@
         <div class="bg-black text-gray-100 py-6 px-6 shadow md:flex justify-between items-center">
             <div class="flex item-center">
                 <span class="text-white text-xl mr-1">
-                    fresh frish online
+                    fresh fish online
                 </span>
 
             </div>

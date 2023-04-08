@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-myblue   h-screen text-center py-10">
+    <div class="bg-myblue h-screen text-center py-10">
         <div>
             <h2 class=" my-5 text-white text-4xl uppercase font-bold">finder fish</h2>
         </div>
@@ -74,11 +74,6 @@
                 <a href="">
                     <div class="capitalize py-3 font-xs text-lg sm:text-sm text-slate-50 border-b-2 hover:bg-blue-800">fish</div>
                 </a>
-                
-                
-
-
-
             </div>
         </div>
     </div>
