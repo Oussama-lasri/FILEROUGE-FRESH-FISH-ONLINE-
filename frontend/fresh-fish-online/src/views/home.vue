@@ -6,7 +6,8 @@
   <FinderFish />
   <fishes />
   <joinSection />
- <Article />
+  <blogSection />
+  <emailSection />
 </template>
 
 <script setup>
@@ -15,7 +16,11 @@ import iconChat from '../components/icons/iconChat.vue';
 import FinderFish from '../components/home/FinderFish.vue';
 import fishes from '../components/fishes.vue';
 import joinSection from '../components/joinSection.vue';
-import Article from '../components/Article.vue';
+import blogSection from '../components/blogSection.vue';
+import emailSection from '../components/emailSection.vue';
+
+
+
 
 </script>
 
