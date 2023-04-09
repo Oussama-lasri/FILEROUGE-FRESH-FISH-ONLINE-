@@ -2,7 +2,7 @@
     <section class="bg-joinSection h-96 flex justify-center items-center">
 
         <div class="w-[100%] flex flex-col  items-center justify-center mx-auto h-[18rem] bg-[rgba(0,42,75,0.5)]">
-            <p class="text-5xl font-extrabold text-left text-white inline " style="props.style">
+            <p class="lg:text-5xl md:text-4xl sm:text-3xl  font-extrabold text-left text-white inline " style="props.style">
                 Special Offers, Recipes and News
             </p>
             <div class="mt-5">

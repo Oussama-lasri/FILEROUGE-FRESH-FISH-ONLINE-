@@ -1,27 +1,11 @@
 <template>
-  <div class="inset-y-0 left-0 absolute w-[60px] right-[84.17%]">
-    <svg
-      width="100%"
-      height="100%"
-      preserve-aspect-ratio="none"
-      view-box="0 0 60 60"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M 47.5 12.5 H 12.5 C 9.739 12.5 7.5 14.739 7.5 17.5 V 42.5 C 7.5 45.262 9.739 47.5 12.5 47.5 H 47.5 C 50.261 47.5 52.5 45.262 52.5 42.5 V 17.5 C 52.5 14.739 50.261 12.5 47.5 12.5 Z"
-        stroke="#0076D5"
-        stroke-width="5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      ></path>
-      <path
-        d="M 7.5 17.5 L 30 32.5 L 52.5 17.5"
-        stroke="#0076D5"
-        stroke-width="5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      ></path>
+  <div class="text-myblue font-extrabold w-16 h-16 sm:w-12 sm:h-12">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" 
+      viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
+      <path d="M3 7l9 6l9 -6"></path>
     </svg>
   </div>
 </template>
@@ -32,6 +16,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
