@@ -4,6 +4,7 @@ import details from '../views/details.vue'
 import cardShop from '../views/cardShop.vue'
 import login from '../views/login.vue'
 import register from '../views/register.vue'
+import checkout from '../views/checkout.vue'
 
 
 const routes = [
@@ -31,6 +32,11 @@ const routes = [
         path: '/register',
         name: 'register',
         component: register
+    },
+    {
+        path: '/checkout',
+        name: 'checkout',
+        component: checkout
     },
 //     {
 //         path: '/:catchAll(.*)',

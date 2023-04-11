@@ -1,13 +1,62 @@
 <template>
-  
+    <navBar />
+    <nav3 />
+    <section class="register">
+        <h2 class="font-extrabold text-4xl text-center mb-5 mt-24">Login</h2>
+        
+        <form action="" class="flex mb-10 flex-col justify-center  items-center">
+            <a href class="py-5  w-1/2 mx-auto text-sm text-gray-600 hover:text-gray-950">Don't have an account? Register here.</a>
+            <div class="text-left justify-center mb-6">
+            <div class="">
+                <label class="block text-gray-600 font-bold text-left mb-10 " for="email">
+                    Email
+                </label>
+            </div>
+            <div class="w-[40rem]">
+                <input class="form-input block pl-10 rounded-md h-12 w-full focus:bg-white" id="my-textfield" type="text" value="">
+            </div>
+        </div>
+        <div class="flex flex-col  text-left justify-center mb-6">
+            <div class="">
+                <label class="block text-gray-600 font-bold text-left mb-10 " for="email">
+                    Password
+                </label>
+            </div>
+            <div class="w-[40rem]">
+                <input class="form-input block pl-10 rounded-md h-12 w-full focus:bg-white" id="my-textfield" type="text" value="">
+            </div>
+        </div>
+        <div class="flex flex-col items-center text-left justify-center mb-6">
+            <div class="w-[40rem]">
+                <button class="bg-myblue px-8  py-2 rounded-md text-white hover:bg-blue-900">Login</button>
+            </div>
+        </div>
+    </form>
+
+
+    </section>
+    <footerSection />
 </template>
 
-<script>
-export default {
+<script setup>
+import footerSection from '../components/footerSection.vue';
+import nav3 from '../components/nav3.vue';
+import navBar from '../components/navBar.vue'
 
-}
+
+
+
 </script>
 
 <style>
-
+ .max-h-64 {
+            max-height: 16rem;
+        }
+    
+        .form-input,
+        .form-textarea,
+        .form-select,
+        .form-multiselect {
+            background-color: #edf2f7;
+        }
 </style>

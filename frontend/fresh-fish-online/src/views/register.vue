@@ -1,62 +1,69 @@
 <template>
-    <navBar />
-    <nav3 />
-    <section class="register">
-        <h2 class="font-extrabold text-4xl text-center mb-5 mt-24">Login</h2>
-        
-        <form action="" class="flex mb-10 flex-col justify-center  items-center">
-            <a href class="py-5  w-1/2 mx-auto text-sm text-gray-600 hover:text-gray-950">Don't have an account? Register here.</a>
-            <div class="text-left justify-center mb-6">
-            <div class="">
-                <label class="block text-gray-600 font-bold text-left mb-10 " for="email">
+    <navbar />
+    <h2 class="text-4xl font-bold text-center mt-12 capitalize ">register</h2>
+    <form class="mx-auto py-24 w-full max-w-lg">
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    First Name
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-first-name" type="text" placeholder="Jane">
+                
+            </div>
+            <div class="w-full md:w-1/2 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                    Last Name
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-last-name" type="text" placeholder="Doe">
+            </div>
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                     Email
                 </label>
-            </div>
-            <div class="w-[40rem]">
-                <input class="form-input block pl-10 rounded-md h-12 w-full focus:bg-white" id="my-textfield" type="text" value="">
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-password" type="Email" placeholder="Enter You email">
+                <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
             </div>
         </div>
-        <div class="flex flex-col  text-left justify-center mb-6">
-            <div class="">
-                <label class="block text-gray-600 font-bold text-left mb-10 " for="email">
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Password
                 </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-first-name" type="Password" placeholder="*************">
+                
             </div>
-            <div class="w-[40rem]">
-                <input class="form-input block pl-10 rounded-md h-12 w-full focus:bg-white" id="my-textfield" type="text" value="">
+            <div class="w-full md:w-1/2 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                    Confirm Password
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-last-name" type="Password" placeholder="*************">
             </div>
         </div>
-        <div class="flex flex-col items-center text-left justify-center mb-6">
+        <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-[40rem]">
-                <button class="bg-myblue px-8  py-2 rounded-md text-white hover:bg-blue-900">Login</button>
+                <button class="bg-myblue ml-3 px-8  py-2 rounded-md text-white hover:bg-blue-900">Register</button>
             </div>
         </div>
-    </form>
-
-
-    </section>
-    <footerSection />
+          </form>
+<FooterSection />
 </template>
 
 <script setup>
-import footerSection from '../components/footerSection.vue';
-import nav3 from '../components/nav3.vue';
-import navBar from '../components/navBar.vue'
-
-
-
+import FooterSection from '../components/footerSection.vue';
+import navbar from '../components/navbar.vue';
 
 </script>
 
-<style>
- .max-h-64 {
-            max-height: 16rem;
-        }
-    
-        .form-input,
-        .form-textarea,
-        .form-select,
-        .form-multiselect {
-            background-color: #edf2f7;
-        }
-</style>
+<style></style>
