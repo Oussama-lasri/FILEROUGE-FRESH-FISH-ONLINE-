@@ -9,7 +9,7 @@ import checkout from '../views/checkout.vue'
 
 const routes = [
     {
-        path: '/home',
+        path: '/',
         name: 'home',
         component: home
     },

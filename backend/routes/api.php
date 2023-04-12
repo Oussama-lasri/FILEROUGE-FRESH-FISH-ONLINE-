@@ -4,6 +4,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\customerController;
+use App\Http\Controllers\messageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,5 @@ use App\Http\Controllers\customerController;
 
 Route::apiResource('customer',customerController::class);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('message',[messageController::class,'message']);
+
