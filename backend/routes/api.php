@@ -21,3 +21,7 @@ Route::apiResource('customer',customerController::class);
 
 Route::post('message',[messageController::class,'message']);
 
+Route::middleware('auth:sanctum')->get('/user',function(Request $request){
+    return $request->user();
+});
+

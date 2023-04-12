@@ -26,8 +26,10 @@ class customerController extends Controller
         $customer->update($request->validated());
         return response()->json('costumer updated');
     }
-    public function destroy( Customer $customer){
+    public function destroy(Customer $customer){
         $customer->delete();
+        return response()->json('costumer deleted');
+
       
     }
 }
