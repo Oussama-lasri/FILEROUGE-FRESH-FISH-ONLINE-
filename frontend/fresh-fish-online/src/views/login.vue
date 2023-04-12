@@ -13,7 +13,7 @@
                 </label>
             </div>
             <div class="w-[40rem]">
-                <input class="form-input block pl-10 rounded-md h-12 w-full focus:bg-white" id="my-textfield" type="text" value="">
+                <input v-model="form.email" class="form-input block pl-10 rounded-md h-12 w-full focus:bg-white" id="my-textfield" type="text" value="">
             </div>
         </div>
         <div class="flex flex-col  text-left justify-center mb-6">
@@ -23,7 +23,7 @@
                 </label>
             </div>
             <div class="w-[40rem]">
-                <input class="form-input block pl-10 rounded-md h-12 w-full focus:bg-white" id="my-textfield" type="text" value="">
+                <input v-model="form.password" class="form-input block pl-10 rounded-md h-12 w-full focus:bg-white" id="my-textfield" type="text" value="">
             </div>
         </div>
         <div class="flex flex-col items-center text-left justify-center mb-6">
@@ -41,7 +41,18 @@
 <script setup>
 import footerSection from '../components/footerSection.vue';
 import nav3 from '../components/nav3.vue';
-import navBar from '../components/navBar.vue'
+import navBar from '../components/navBar.vue';
+import { ref,onMounted,reactive } from 'vue';
+let form = reactive({
+   
+    email: '',
+    password: '',
+ 
+
+});
+
+
+
 
 
 
