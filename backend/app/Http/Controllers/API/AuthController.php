@@ -42,6 +42,7 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
+        // return response()->json(Auth::attempt(['email'=>$request->email,'password'=>$request->password]));
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
             //$user = Auth::user();
             $user = $request->user();
@@ -51,9 +52,15 @@ class AuthController extends Controller
             $response = [
                 'success' => true,
                 'data' => $success,
-                'message' => "User register successfully",
+                'message' => "User login successfully",
             ];
             return response()->json($response,200);
+        }else{
+            $response = [
+                'success' => false,
+                'message' => 'email or password not correct'
+            ];
+            return response()->json($response);
         }
     }
 }
