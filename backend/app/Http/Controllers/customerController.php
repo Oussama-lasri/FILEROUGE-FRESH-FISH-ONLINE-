@@ -12,6 +12,7 @@ use PhpParser\Node\Scalar\MagicConst\Method;
 class customerController extends Controller
 {
     public function index(){
+        // dd('test');
         return new customerCollection(customer::all());
     }
 
