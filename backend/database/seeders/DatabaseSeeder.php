@@ -4,8 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Fish;
 use App\Models\User;
+
+use App\Models\BuyBy;
 use App\Models\Customer;
+use App\Models\categorie;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +20,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
             Customer::factory(10)->create();
+            
+            BuyBy::factory(10)->create();
+            categorie::factory(10)->create();
+            Fish::factory(10)->create();
         // User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

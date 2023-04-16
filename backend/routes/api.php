@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\API\AuthController;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\customerController;
+use App\Http\Controllers\fishController;
 use App\Http\Controllers\messageController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\customerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\messageController;
 */
 
 Route::apiResource('customer',customerController::class);
+Route::apiResource('fish',fishController::class);
 
 Route::post('message',[messageController::class,'message']);
 
