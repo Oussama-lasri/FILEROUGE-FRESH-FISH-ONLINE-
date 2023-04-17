@@ -7,18 +7,16 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     First Name
                 </label>
-                <input
-                    v-model="form.firstName"
+                <input v-model="form.firstName"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     id="grid-first-name" type="text" placeholder="Jane">
-                
+
             </div>
             <div class="w-full md:w-1/2 px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Last Name
                 </label>
-                <input
-                v-model="form.lastName"
+                <input v-model="form.lastName"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-last-name" type="text" placeholder="Doe">
             </div>
@@ -28,11 +26,10 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                     Email
                 </label>
-                <input
-                v-model="form.email"
+                <input v-model="form.email"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-password" type="Email" placeholder="Enter You email">
-               
+
             </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -40,18 +37,16 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Password
                 </label>
-                <input
-                v-model="form.password"
+                <input v-model="form.password"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     id="grid-first-name" type="Password" placeholder="*************">
-                
+
             </div>
             <div class="w-full md:w-1/2 px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Confirm Password
                 </label>
-                <input
-                v-model="form.confirm_password"
+                <input v-model="form.confirm_password"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-last-name" type="Password" placeholder="*************">
             </div>
@@ -61,14 +56,14 @@
                 <button class="bg-myblue ml-3 px-8  py-2 rounded-md text-white hover:bg-blue-900">Register</button>
             </div>
         </div>
-          </form>
-<FooterSection />
+    </form>
+    <FooterSection />
 </template>
 
 <script setup>
 import FooterSection from '../components/footerSection.vue';
 import navbar from '../components/navbar.vue';
-import { reactive } from 'vue';
+import { reactive,ref } from 'vue';
 import axios from 'axios';
 
 let form = reactive({
@@ -79,10 +74,10 @@ let form = reactive({
     confirm_password: '',
 });
 
-const register = async() => await axios.post('http://127.0.0.1:8000/api/register',form)
-.then(response =>{
-    console.log(response);
-} )
+const register = async () => await axios.post('http://127.0.0.1:8000/api/register', form)
+    .then(response => {
+        console.log(response);
+    })
 
 </script>
 

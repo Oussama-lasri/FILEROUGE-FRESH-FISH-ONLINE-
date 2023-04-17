@@ -8,7 +8,8 @@ import checkout from '../views/checkout.vue'
 import chat from '../views/chat.vue'
 import dashboard from '../views/admin/dashboard.vue'
 import table from '../views/admin/table.vue'
-import gestionProduct from '../views/admin/gestionProduct.vue'
+import showAll from '../views/admin/fish/showAll.vue'
+import addFish from '../views/admin/fish/add.vue'
 
 
 const routes = [
@@ -58,9 +59,14 @@ const routes = [
         component: table
     },
     {
-        path: '/gestionProduct',
-        name: 'gestionProduct',
-        component: gestionProduct
+        path: '/fish/showAll',
+        name: 'showAll',
+        component: showAll
+    },
+    {
+        path: '/fish/add',
+        name: 'addFish',
+        component: addFish
     },
     {
         path: '/:catchAll(.*)',

@@ -1,12 +1,15 @@
 <?php
 
 use App\Models\Customer;
+use App\Models\categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\fishController;
+use App\Http\Controllers\buyByController;
 use App\Http\Controllers\messageController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\customerController;
+use App\Http\Controllers\categorieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +23,8 @@ use App\Http\Controllers\customerController;
 */
 
 Route::apiResource('customer',customerController::class);
+Route::apiResource('categorie',categorieController::class);
+Route::apiResource('buyBy',buyByController::class);
 Route::apiResource('fish',fishController::class);
 
 Route::post('message',[messageController::class,'message']);

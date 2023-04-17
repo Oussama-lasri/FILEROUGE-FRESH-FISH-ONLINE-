@@ -15,12 +15,14 @@ class fishResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id'=>$this->id,
             'title'=> $this->title,
             'price'=> $this->price,
+            'image' => $this->image,
             'description'=> $this->description,
             'status'=> $this->status,
-            'category_id'=> $this->category_id,
-            'buy_by_id'=> $this->buy_by_id,
+            'category'=> $this->category->name,
+            'buy_by'=> $this->buyBy->name,
         ];
     }
 }

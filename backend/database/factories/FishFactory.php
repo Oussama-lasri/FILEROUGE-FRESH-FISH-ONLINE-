@@ -21,6 +21,7 @@ class FishFactory extends Factory
             'price' => $this->faker->sentence(),
             'description' => $this->faker->sentence(),
             'status' => $this->faker->sentence(),
+            'image' => $this->faker->sentence(),
             'category_id' => '1',
             'buy_by_id' => '1',
         ];

@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->string('price');
             $table->longText('description');
-            $table->string('status');
+            $table->string('status')->default('disponible');
+            $table->string('image')->nullable();
+            $table->foreignId('buy_by_id')->constrained('buy_by','id')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('categories','id')->onDelete('cascade');
             $table->timestamps();
         });
     }
