@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class fishResource extends JsonResource
@@ -21,6 +21,7 @@ class fishResource extends JsonResource
             'image' => $this->image,
             'description'=> $this->description,
             'status'=> $this->status,
+            'quantity'=> $this->quantity,
             'category'=> $this->category->name,
             'buy_by'=> $this->buyBy->name,
         ];

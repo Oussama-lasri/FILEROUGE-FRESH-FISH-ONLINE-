@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreFishRequest extends FormRequest
@@ -17,18 +18,19 @@ class StoreFishRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     * @return array<string, Rule|array|string>
      */
     public function rules(): array
     {
         return [
-            'title'=> ['required'],
-            'price'=> ['required'],
-            'description'=> ['required'],
-            'status'=> ['required'],
-            'image'=> ['required'],
-            'category_id'=> ['required'],
-            'buy_by_id'=> ['required'],
+            'title' => ['required'],
+            'price' => ['required'],
+            'description' => ['required'],
+            'status' => ['required'],
+            'quantity' => ['required'],
+            'image' => ['required'],
+            'category_id' => ['required'],
+            'buy_by_id' => ['required'],
         ];
     }
 }

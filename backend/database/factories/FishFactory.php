@@ -1,7 +1,6 @@
 <?php
 
 namespace Database\Factories;
-
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +20,7 @@ class FishFactory extends Factory
             'price' => $this->faker->sentence(),
             'description' => $this->faker->sentence(),
             'status' => $this->faker->sentence(),
+            'quantity' => $this->faker->numberBetween($min = 1, $max = 100),
             'image' => $this->faker->sentence(),
             'category_id' => '1',
             'buy_by_id' => '1',

@@ -20,7 +20,7 @@ class fishController extends Controller
     
     public function store(StoreFishRequest $request)
     {
-        
+        // dd($request);
         Fish::create($request->validated());
         return response()->json('created fish');
     }
@@ -34,6 +34,7 @@ class fishController extends Controller
     
     public function update(StoreFishRequest $request, fish $fish)
     {
+        
         $fish->update($request->validated());
         return response()->json('updated fish');
     }

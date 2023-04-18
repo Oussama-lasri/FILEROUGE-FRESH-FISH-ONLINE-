@@ -31,7 +31,7 @@
                 </label>
                 <input v-model="form.quantity"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    type="number" placeholder="Enter Quantity">
+                    type="number" placeholder="Enter Quantity" min="1">
 
             </div>
             <div class="w-full md:w-1/2 px-3">
@@ -40,7 +40,7 @@
                 </label>
                 <input v-model="form.price"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-last-name" type="Number" placeholder="20.10">
+                    id="grid-last-name" type="Number" placeholder="20.10" min="1">
             </div>
         </div>
 
@@ -61,7 +61,7 @@
                 </label>
                 <select v-model="form.category_id"
                     class="block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-                    <option selected>SELECT CATEGORY</option>
+                    <option v-for="Category in Allcategories" :value="Category.id">{{ Category.name }}</option>
                 </select>
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -70,7 +70,7 @@
                 </label>
                 <select v-model="form.buy_by_id"
                     class="block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-                    <option selected>SELECT OPTION</option>
+                    <option v-for="buyBy in AllbuyBy" :value="buyBy.id">{{ buyBy.name }}</option>
                 </select>
             </div>
         </div>
@@ -88,15 +88,29 @@ import { reactive, ref, getCurrentInstance } from 'vue';
 import axios from 'axios';
 import { routeLocationKey } from 'vue-router';
 
+
+const Allcategories = ref('');
 async function categories() {
     try {
-        let response = await axios.get('http://127.0.0.1:8000/api/categories');
-        fishes.value = response.data.data ;
+        let response = await axios.get('http://127.0.0.1:8000/api/categorie');
+        Allcategories.value = response.data.data;
         console.log(response.data.data);
     } catch (error) {
         console.error(error);
     }
 }
+const AllbuyBy = ref('');
+async function buyBy() {
+    try {
+        let response = await axios.get('http://127.0.0.1:8000/api/buyBy');
+        AllbuyBy.value = response.data.data;
+        console.log(response.data.data);
+    } catch (error) {
+        console.error(error);
+    }
+}
+categories();
+buyBy();
 
 let form = reactive({
     title: '',
@@ -105,20 +119,21 @@ let form = reactive({
     price: '',
     description: '',
     category_id: '',
+
     buy_by_id: '',
 });
 
 function changeImage(event) {
     let file = event.target.files[0];
-            let formData = new FormData();
-            formData.append('file', file);
-            formData.append('upload_preset', 'xtmbp75g');
-            axios.post('https://api.cloudinary.com/v1_1/dkl6ojuvg/upload', formData)
-                .then(response => {
-                    console.log(response);
-                    form.image = response.data.secure_url;
-                })
-        }
+    let formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'xtmbp75g');
+    axios.post('https://api.cloudinary.com/v1_1/dkl6ojuvg/upload', formData)
+        .then(response => {
+            console.log(response);
+            form.image = response.data.secure_url;
+        })
+}
 
 
 
@@ -130,21 +145,21 @@ function register() {
     formData.append("quantity", form.quantity);
     formData.append("price", form.price);
     formData.append("description", form.description);
-    formData.append("category_id", "2");
-    formData.append("buy_by_id", "1");
+    formData.append("category_id", form.category_id);
+    formData.append("buy_by_id", form.buy_by_id);
     formData.append("status", "test");
     console.log(formData);
 
     try {
-        const response = axios.post('http://127.0.0.1:8000/api/fish',formData,{
+        const response = axios.post('http://127.0.0.1:8000/api/fish', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         });
-    routeLocationKey
-} catch (error) {
-    console.error(error);
-}
+        routeLocationKey
+    } catch (error) {
+        console.error(error);
+    }
 }
 </script>
 

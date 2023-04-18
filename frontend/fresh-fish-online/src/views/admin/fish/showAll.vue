@@ -108,7 +108,7 @@
                                     <td
                                         class="p-2 align-middle bg-transparent border-b-0 text-center whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-xs font-semibold leading-tight dark:text-white dark:opacity-60">{{fish.Quantity}}</span>
+                                            class="text-xs font-semibold leading-tight dark:text-white dark:opacity-60">{{fish.quantity}}</span>
                                     </td>
 
                                     <td

@@ -11,7 +11,7 @@ class Fish extends Model
     use HasFactory;
 
     protected $table = 'fish';
-    protected $fillable = ['title','price','description','image','status','category_id','buy_by_id'];
+    protected $fillable = ['title','price','description','quantity','image','status','category_id','buy_by_id'];
 
     public function category(){
         return $this->belongsTo(categorie::class,'category_id','id');
