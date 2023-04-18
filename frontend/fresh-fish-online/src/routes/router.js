@@ -10,6 +10,7 @@ import dashboard from '../views/admin/dashboard.vue'
 import table from '../views/admin/table.vue'
 import showAll from '../views/admin/fish/showAll.vue'
 import addFish from '../views/admin/fish/add.vue'
+import update from '../views/admin/fish/update.vue'
 
 
 const routes = [
@@ -67,6 +68,12 @@ const routes = [
         path: '/fish/add',
         name: 'addFish',
         component: addFish
+    },
+    {
+        path: '/fish/update/:id',
+        name: 'update',
+        component: update,
+        props: true
     },
     {
         path: '/:catchAll(.*)',
