@@ -26,7 +26,10 @@ class fishResource extends JsonResource
                 'id'=> $this->category_id,
                 'name'=>$this->category->name
             ],
-            'buy_by' => $this->buyBy->name,
-        ];
+        'buy_by' => [
+            'name'=>$this->buyBy->name,
+            'id'=> $this->buy_by_id
+        ],
+    ];
     }
 }

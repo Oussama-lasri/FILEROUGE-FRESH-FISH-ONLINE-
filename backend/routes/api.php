@@ -21,19 +21,20 @@ use App\Http\Controllers\categorieController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+// Route::middleware(['cors'])->group(function () {
+Route::apiResource('customer', customerController::class);
+Route::apiResource('categorie', categorieController::class);
+Route::apiResource('buyBy', buyByController::class);
+Route::apiResource('fish', fishController::class);
+Route::post("/fish-test/{fish}", [fishController::class, 'WAAA3']);
+// });
 
-Route::apiResource('customer',customerController::class);
-Route::apiResource('categorie',categorieController::class);
-Route::apiResource('buyBy',buyByController::class);
-Route::apiResource('fish',fishController::class);
+Route::post('message', [messageController::class, 'message']);
 
-Route::post('message',[messageController::class,'message']);
-
-Route::middleware('auth:sanctum')->get('/user',function(Request $request){
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::controller(AuthController::class)->group(function(){
-    Route::post('login','login');
-    Route::post('register','register');
+Route::controller(AuthController::class)->group(function () {
+    Route::post('login', 'login');
+    Route::post('register', 'register');
 });
-

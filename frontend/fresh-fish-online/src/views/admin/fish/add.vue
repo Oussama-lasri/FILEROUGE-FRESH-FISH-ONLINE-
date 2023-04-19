@@ -127,7 +127,7 @@ buyBy();
 
 let form = reactive({
     title: '',
-    image: "yeyeyey",
+    image: '',
     quantity: '',
     price: '',
     description: '',
@@ -155,8 +155,6 @@ function changeImage(event) {
         })
 }
 
-console.log()
-
 
 function addFish() {
     if (!!form.title && !!form.image && !!form.quantity && !!form.price && !!form.category_id && !!form.buy_by_id) {
@@ -170,6 +168,7 @@ function addFish() {
         formData.append("buy_by_id", form.buy_by_id);
         formData.append("status", "test");
         console.log(formData);
+        
 
         try {
             const response = axios.post('http://127.0.0.1:8000/api/fish', formData)

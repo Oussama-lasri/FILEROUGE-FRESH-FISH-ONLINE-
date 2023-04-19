@@ -96,24 +96,24 @@
                                     </td>
                                     <td
                                         class="p-2 align-middle bg-transparent border-b-0 text-center whitespace-nowrap shadow-transparent">
-                                        <span
-                                            class="text-xs font-semibold leading-tight dark:text-white dark:opacity-60">{{ fish.category['name'] }}</span>
+                                        <span class="text-xs font-semibold leading-tight dark:text-white dark:opacity-60">{{
+                                            fish.category['name'] }}</span>
                                     </td>
                                     <td
                                         class="p-2 align-middle bg-transparent border-b-0 text-center whitespace-nowrap shadow-transparent">
-                                        <span
-                                            class="text-xs font-semibold leading-tight dark:text-white dark:opacity-60">{{ fish.buy_by }}</span>
+                                        <span class="text-xs font-semibold leading-tight dark:text-white dark:opacity-60">{{
+                                            fish.buy_by['name'] }}</span>
                                     </td>
                                     <td
                                         class="p-2 align-middle bg-transparent border-b-0 text-center whitespace-nowrap shadow-transparent">
-                                        <span
-                                            class="text-xs font-semibold leading-tight dark:text-white dark:opacity-60">{{ fish.quantity }}</span>
+                                        <span class="text-xs font-semibold leading-tight dark:text-white dark:opacity-60">{{
+                                            fish.quantity }}</span>
                                     </td>
 
                                     <td
                                         class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
                                         <div class="flex text-center">
-                                            <a :href="'/fish/update/'+fish.id">
+                                            <a :href="'/fish/update/' + fish.id">
                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                     class="icon icon-tabler icon-tabler-edit hover:text-green-500"
                                                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
@@ -128,7 +128,7 @@
                                                     <path d="M16 5l3 3"></path>
                                                 </svg>
                                             </a>
-                                            <a href="">
+                                            <a @click="deleteFish(fish.id)">
 
                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                     class="icon icon-tabler icon-tabler-trash hover:text-red-500" width="24"
@@ -159,6 +159,7 @@ import navbar from '../../../components/admin/navBar.vue'
 import { ref, onMounted } from 'vue'
 import axios from 'axios';
 import { RouterLink } from 'vue-router';
+import Swal from 'sweetalert2';
 const fishes = ref('')
 
 
@@ -173,6 +174,45 @@ async function allfish() {
     }
 }
 allfish();
+
+async function deleteFish(id) {
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            try {
+                const response = axios.delete('http://127.0.0.1:8000/api/fish/'+id)
+                .then(res => {
+                    Swal.fire(
+                        'Deleted!',
+                        res.data,
+                        'success'
+                    );
+                    allfish();
+                });
+                console.log(response.data.data);
+            } catch (error) {
+                console.error(error);
+            }
+            const response = axios.put('http://127.0.0.1:8000/api/fish/' + id, form)
+                .then(res => {
+                    Swal.fire(
+                        'Deleted!',
+                        res.data,
+                        'success'
+                    )
+                })
+
+        }
+    })
+}
 </script>
 
 <style></style>
