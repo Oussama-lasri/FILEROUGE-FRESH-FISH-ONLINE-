@@ -2,15 +2,22 @@ import {createRouter, createWebHistory } from 'vue-router'
 import home from '../views/home.vue'
 import details from '../views/details.vue'
 import cardShop from '../views/cardShop.vue'
-import login from '../views/login.vue'
-import register from '../views/register.vue'
+import login from '../views/auth/login.vue'
+import register from '../views/auth/register.vue'
 import checkout from '../views/checkout.vue'
 import chat from '../views/chat.vue'
 import dashboard from '../views/admin/dashboard.vue'
 import table from '../views/admin/table.vue'
-import showAll from '../views/admin/fish/showAll.vue'
+// fish
+import showAllFish from '../views/admin/fish/showAll.vue'
 import addFish from '../views/admin/fish/add.vue'
-import update from '../views/admin/fish/update.vue'
+import updateFish from '../views/admin/fish/update.vue'
+// ****
+// recipe
+import showAllRecipe from '../views/admin/recipe/showAll.vue'
+import addRecipe from '../views/admin/recipe/add.vue'
+import updateRecipe from '../views/admin/recipe/update.vue'
+// ****
 
 
 const routes = [
@@ -61,8 +68,8 @@ const routes = [
     },
     {
         path: '/fish/showAll',
-        name: 'showAll',
-        component: showAll
+        name: 'showAllFish',
+        component: showAllFish
     },
     {
         path: '/fish/add',
@@ -71,10 +78,26 @@ const routes = [
     },
     {
         path: '/fish/update/:id',
-        name: 'update',
-        component: update,
-        props: true
+        name: 'updateFish',
+        component: updateFish,
     },
+    // recipies 
+    {
+        path: '/recipe/showAll',
+        name: 'showAllRecipe',
+        component: showAllRecipe
+    },
+    {
+        path: '/recipe/add',
+        name: 'addRecipe',
+        component: addRecipe
+    },
+    {
+        path: '/recipe/update/:id',
+        name: 'updateRecipe',
+        component: updateRecipe
+    },
+    // ***********
     {
         path: '/:catchAll(.*)',
         name:'404',

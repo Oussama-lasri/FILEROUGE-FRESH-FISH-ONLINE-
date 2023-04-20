@@ -39,10 +39,6 @@ class fishController extends Controller
         return response()->json('updated fish');
     }
 
-    public function WAAA3(StoreFishRequest $request, fish $fish){
-        $fish->update($request->validated());
-        return response()->json('updated fish');
-    }
 
     public function destroy(fish $fish)
     {

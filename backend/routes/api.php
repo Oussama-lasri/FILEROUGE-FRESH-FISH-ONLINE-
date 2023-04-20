@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecepieController;
 use App\Models\Customer;
 use App\Models\categorie;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ Route::apiResource('customer', customerController::class);
 Route::apiResource('categorie', categorieController::class);
 Route::apiResource('buyBy', buyByController::class);
 Route::apiResource('fish', fishController::class);
-Route::post("/fish-test/{fish}", [fishController::class, 'WAAA3']);
+Route::apiResource('recipe', RecepieController::class);
+
 // });
 
 Route::post('message', [messageController::class, 'message']);

@@ -61,8 +61,8 @@
 </template>
 
 <script setup>
-import FooterSection from '../components/footerSection.vue';
-import navbar from '../components/navbar.vue';
+import FooterSection from '../../components/footerSection.vue';
+import navbar from '../../components/navBar.vue';
 import { reactive,ref } from 'vue';
 import axios from 'axios';
 

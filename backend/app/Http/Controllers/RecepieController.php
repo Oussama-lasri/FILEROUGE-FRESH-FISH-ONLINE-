@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Recepie;
 use App\Http\Requests\StoreRecepieRequest;
 use App\Http\Requests\UpdateRecepieRequest;
+use App\Http\Resources\recipeCollection;
+use App\Http\Resources\recipeResource;
 
 class RecepieController extends Controller
 {
@@ -13,7 +15,7 @@ class RecepieController extends Controller
      */
     public function index()
     {
-        //
+        return new recipeCollection(Recepie::all());
     }
 
     /**
@@ -21,30 +23,34 @@ class RecepieController extends Controller
      */
     public function store(StoreRecepieRequest $request)
     {
-        //
+        // dd('tete');
+        Recepie::create($request->validated());
+        return response()->json('created recipe');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Recepie $recepie)
+    public function show(Recepie $recipe)
     {
-        //
+        return new recipeResource($recipe);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRecepieRequest $request, Recepie $recepie)
+    public function update(StoreRecepieRequest $request, Recepie $recipe)
     {
-        //
+        $recipe->update($request->validated());
+        return response()->json('updated recipe');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Recepie $recepie)
+    public function destroy(Recepie $recipe)
     {
-        //
+        $recipe->delete();
+        return response()->json('deleted recipe');
     }
 }

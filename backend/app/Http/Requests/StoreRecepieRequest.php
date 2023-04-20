@@ -11,7 +11,7 @@ class StoreRecepieRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class StoreRecepieRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required'],
+            'dish_type' => ['required'],
+            'image' => ['required'],
+            'Serves' => ['required'],
+            'preparation_time' => ['required'],
+            'cooking_time' => ['required'],
+            'difficulty' => ['required'],
+            'cuisine_type' => ['required'],
+            'ingredients' => ['required'],
+            'method' => ['required'],
+            'category' => ['required'],
         ];
     }
 }

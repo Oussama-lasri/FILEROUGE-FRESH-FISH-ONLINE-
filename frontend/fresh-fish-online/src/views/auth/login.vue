@@ -40,9 +40,9 @@
 </template>
 
 <script setup>
-import footerSection from '../components/footerSection.vue';
-import nav3 from '../components/nav3.vue';
-import navBar from '../components/navBar.vue';
+import footerSection from '../../components/footerSection.vue';
+import nav3 from '../../components/nav3.vue';
+import navBar from '../../components/navBar.vue';
 import axios  from 'axios';
 import {useRouter} from 'vue-router';
 import { ref,onMounted,reactive } from 'vue';
