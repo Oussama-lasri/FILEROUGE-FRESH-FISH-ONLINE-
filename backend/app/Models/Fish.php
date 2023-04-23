@@ -20,6 +20,6 @@ class Fish extends Model
         return $this->belongsTo(BuyBy::class,'buy_by_id','id');
     }
     public function recipe(){
-        return $this->belongsTo(Fish::class,'category','id');
+        return $this->belongsTo(Fish::class,'category_id','id');
     }
 }

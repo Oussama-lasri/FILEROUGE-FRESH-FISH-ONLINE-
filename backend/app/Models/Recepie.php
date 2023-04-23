@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Fish;
+use App\Models\categorie;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -14,5 +15,8 @@ class Recepie extends Model
 
     public function fishes(){
         return $this->hasMany(Fish::class,'category_id','category');
+    }
+    public function categorie(){
+        return $this->belongsTo(categorie::class,'category','id');
     }
 }

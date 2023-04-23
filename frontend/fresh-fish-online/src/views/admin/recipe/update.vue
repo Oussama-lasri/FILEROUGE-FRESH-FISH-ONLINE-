@@ -1,7 +1,9 @@
 <template>
-    <navBar />
-    <h2 class="text-4xl font-bold text-center mt-24 capitalize ">Add fish</h2>
-    <form @submit.prevent="update" method="put" class="mx-auto py-24 w-full max-w-lg">
+    <!-- <navBar /> -->
+
+    <form @submit.prevent="addRecipe" class="mx-auto py-24 w-full max-w-lg">
+        <!-- <router-link to="" class="absolute left-36 top-24 bg-slate-200 py-3 rounded-md px-5">back</router-link> -->
+        <h2 class="text-4xl font-bold text-center mb-24 capitalize ">Update recipe</h2>
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
@@ -11,91 +13,120 @@
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     id="grid-first-name" type="text" placeholder="Salamon">
                 <span class="text-red-500" v-if="errors.title">{{ errors.title }}</span>
-
             </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
-                <img :src="form.image" alt="">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    Category of fish
+                </label>
+                <select v-model="form.category"
+                    class="block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                    <option v-for="Category in Allcategories" :key="Category.id" :value="Category.id">{{ Category.name }}</option>
+                </select>
+                <span class="text-red-500" v-if="errors.category">{{ errors.category }}</span>
             </div>
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                     Image
                 </label>
+            <div class="w-full py-5 px-3">
+                <img :src="form.image" alt="">
+            </div>
+            
                 <input
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="image" type="file" @change="changeImage">
+                    type="file" @change="changeImage">
                 <span class="text-red-500" v-if="errors.image">{{ errors.image }}</span>
-
-
+            </div>
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    Dish Type
+                </label>
+                <input v-model="form.dish_type"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-first-name" type="text" placeholder="Salamon">
+                <span class="text-red-500" v-if="errors.title">{{ errors.dish_type }}</span>
             </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                    Quantity
+                    Preparation time
                 </label>
-                <input v-model="form.quantity"
+                <input v-model="form.preparation_time"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    type="number" placeholder="Enter Quantity" min="1">
-                <span class="text-red-500" v-if="errors.quantity">{{ errors.quantity }}</span>
-
-
+                    type="number" placeholder="Enter time of prepare recipe" min="1">
+                <span class="text-red-500" v-if="errors.preparation_time">{{ errors.preparation_time }}</span>
             </div>
             <div class="w-full md:w-1/2 px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                    Price
+                    Cooking time
                 </label>
-                <input v-model="form.price"
+                <input v-model="form.cooking_time"
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-last-name" type="Number" placeholder="20.10" min="1">
-                <span class="text-red-500" v-if="errors.price">{{ errors.price }}</span>
-
+                <span class="text-red-500" v-if="errors.cooking_time">{{ errors.cooking_time }}</span>
             </div>
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    Difficulty
+                </label>
+                <input v-model="form.difficulty"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    type="text" placeholder="Easy , ...." min="1">
+                <span class="text-red-500" v-if="errors.difficulty">{{ errors.difficulty }}</span>
+            </div>
+            <div class="w-full md:w-1/2 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                    Cuisine type
+                </label>
+                <input v-model="form.Serves"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    type="number" placeholder="number of person eat " min="1">
+                <span class="text-red-500" v-if="errors.Serves">{{ errors.Serves }}</span>
+            </div>
+        </div>
+
+        <div class="w-full mb-6">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                Cuisine type
+            </label>
+            <input v-model="form.cuisine_type"
+                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                type="text" placeholder="Ex : Frensh" min="1">
+            <span class="text-red-500" v-if="errors.cuisine_type">{{ errors.cuisine_type }}</span>
+        </div>
+
+        <div class="w-full mb-6">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                Ingredients
+            </label>
+            <textarea v-model="form.ingredients"
+                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-password" type="" rows="4"></textarea>
+            <span class="text-red-500" v-if="errors.ingredients">{{ errors.ingredients }}</span>
         </div>
 
 
         <div class="w-full mb-6">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                Description
+                method
             </label>
-            <textarea v-model="form.description"
+            <textarea v-model="form.method"
                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-password" type="" rows="4"></textarea>
-            <span class="text-red-500" v-if="errors.description">{{ errors.description }}</span>
-
-        </div>
-
-        <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                    Category
-                </label>
-                <select v-model="form.category_id"
-                    class="block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-
-                    <option v-for="Category in Allcategories" :value="Category.id"
-                        :selected="[Category.id === form.category_id]">{{ Category.name }}
-                    </option>
-                </select>
-                <span class="text-red-500" v-if="errors.category_id">{{ errors.category_id }}</span>
-
-            </div>
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                    Buy by
-                </label>
-                <select v-model="form.buy_by_id"
-                    class="block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-                    <option v-for="buyBy in AllbuyBy" :value="buyBy.id" :selected="buyBy.id === form.buy_by_id">{{
-                        buyBy.name }}</option>
-                </select>
-                <span class="text-red-500" v-if="errors.buy_by_id">{{ errors.buy_by_id }}</span>
-            </div>
+            <span class="text-red-500" v-if="errors.method">{{ errors.method }}</span>
         </div>
         <div class="flex flex-wrap -mx-3">
             <div class="w-[40rem]">
-                <button class="bg-myblue ml-3 px-8  py-2 rounded-md text-white hover:bg-blue-900">update</button>
+                <button class="bg-myblue ml-3 px-8  py-2 rounded-md text-white hover:bg-blue-900">add a fiish</button>
             </div>
         </div>
     </form>
@@ -123,46 +154,38 @@ async function categories() {
         console.error(error);
     }
 }
-const AllbuyBy = ref('');
-async function buyBy() {
-    try {
-        let response = await axios.get('http://127.0.0.1:8000/api/buyBy');
-        AllbuyBy.value = response.data.data;
-        // console.log(response.data.data);
-    } catch (error) {
-        console.error(error);
-    }
-}
+
 categories();
-buyBy();
+
+
 
 let form = reactive({
     title: '',
+    dish_type: '',
     image: '',
-    quantity: '',
-    price: '',
-    description: '',
-    category_id: '',
-    buy_by_id: '',
-    status: 'disponible'
-    // errors: {
-    //     title: null,
-    //     quantity: null,
-    //     price: null,
-    //     description: null,
-    //     category_id: null,
-    //     buy_by_id: null,
-    // }
+    Serves: '',
+    preparation_time: '',
+    cooking_time: '',
+    difficulty: '',
+    cuisine_type: '',
+    ingredients: '',
+    method: '',
+    category: '',
 });
-console.log('1 =>'+ form.title);
+
 
 let errors = {
     title: null,
-    quantity: null,
-    price: null,
-    description: null,
-    category_id: null,
-    buy_by_id: null,
+    dish_type: null,
+    image: null,
+    Serves: null,
+    preparation_time: null,
+    cooking_time: null,
+    difficulty: null,
+    cuisine_type: null,
+    ingredients: null,
+    method: null,
+    category: null,
 }
 
 function changeImage(event) {
@@ -178,45 +201,39 @@ function changeImage(event) {
 }
 
 onMounted(() => {
-    const fish = ref('');
+    const recipe = ref('');
     const id = route.params.id;
-    async function showFish() {
+    async function showRecipe() {
         try {
-            let response = await axios.get('http://127.0.0.1:8000/api/fish/' + id);
-            fish.value = response.data.data;
-            form.title = response.data.data.title;
-            form.image = response.data.data.image;
-            form.description = response.data.data.description;
-            form.price = response.data.data.price;
-            form.quantity = response.data.data.quantity;
-            form.category_id = response.data.data.category['id'];
-            form.buy_by_id = response.data.data.buy_by['id'];
+            let response = await axios.get('http://127.0.0.1:8000/api/recipe/' + id);
+            recipe.value = response.data.data;
+            console.log(recipe.value);
+            form.title = recipe.value.title;
+            form.dish_type = recipe.value.dish_type;
+            form.image = recipe.value.image;
+            form.Serves = recipe.value.Serves;
+            form.preparation_time = recipe.value.preparation_time;
+            form.cooking_time = recipe.value.cooking_time;
+            form.difficulty = recipe.value.difficulty;
+            form.cuisine_type = recipe.value.cuisine_type;
+            form.ingredients = recipe.value.ingredients;
+            form.method = recipe.value.method;
+            form.category = recipe.value.category;
             // console.log(response.data.data);
         } catch (error) {
             console.error(error);
         }
     }
-    showFish()
+    showRecipe()
 })
-console.log('2 =>'+form.title);
+
 
 
 function update() {
-    // console.log(form.title);
     if (!!form.title && !!form.image && !!form.quantity && !!form.price && !!form.category_id && !!form.buy_by_id) {
-        // const formData = new FormData();
-        // formData.append("title", form.title);
-        // formData.append("image", form.image);
-        // formData.append("quantity", form.quantity);
-        // formData.append("price", form.price);
-        // formData.append("description", form.description);
-        // formData.append("category_id", form.category_id);
-        // formData.append("buy_by_id", form.buy_by_id);
-        // formData.append("status", "test");
-        // console.log(formData);
         try {
-            
-            const response = axios.put('http://127.0.0.1:8000/api/fish/' + id, form)
+
+            const response = axios.put('http://127.0.0.1:8000/api/recipe/' + id, form)
                 .then(res => {
                     Swal.fire({
                         title: res.data,
@@ -224,7 +241,7 @@ function update() {
                         confirmButtonColor: '#3085d6',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            location.href="http://localhost:5173/fish/showAll";
+                            location.href = "http://localhost:5173/fish/showAll";
                             console.log(res.data);
                         }
                     })

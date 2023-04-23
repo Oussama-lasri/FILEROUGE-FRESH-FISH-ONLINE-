@@ -1,7 +1,8 @@
 <template>
-    <navBar />
-    <h2 class="text-4xl font-bold text-center mt-24 capitalize ">Add fish</h2>
+    <!-- <navBar /> -->
+    
     <form @submit.prevent="addFish" class="mx-auto py-24 w-full max-w-lg">
+        <h2 class="text-4xl font-bold text-center mb-24 capitalize ">Add fish</h2>
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
@@ -11,10 +12,12 @@
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     id="grid-first-name" type="text" placeholder="Salamon">
                 <span class="text-red-500" v-if="form.errors.title">{{ form.errors.title }}</span>
-
             </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <img :src="form.image" alt="">
+            </div>
             <div class="w-full px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                     Image
@@ -70,7 +73,7 @@
                 </label>
                 <select v-model="form.category_id"
                     class="block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-                    <option v-for="Category in Allcategories" :value="Category.id">{{ Category.name }}</option>
+                    <option v-for="Category in Allcategories" :key="Category.id" :value="Category.id">{{ Category.name }}</option>
                 </select>
                 <span class="text-red-500" v-if="form.errors.category_id">{{ form.errors.category_id }}</span>
 
@@ -81,7 +84,7 @@
                 </label>
                 <select v-model="form.buy_by_id"
                     class="block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-                    <option v-for="buyBy in AllbuyBy" :value="buyBy.id">{{ buyBy.name }}</option>
+                    <option v-for="buyBy in AllbuyBy" :key="buyBy.id" :value="buyBy.id">{{ buyBy.name }}</option>
                 </select>
                 <span class="text-red-500" v-if="form.errors.buy_by_id">{{ form.errors.buy_by_id }}</span>
 

@@ -1,7 +1,8 @@
 <template>
-    <navBar />
-    <h2 class="text-4xl font-bold text-center mt-24 capitalize ">Add fish</h2>
+    <!-- <navBar /> -->
+    
     <form @submit.prevent="update" method="put" class="mx-auto py-24 w-full max-w-lg">
+        <h2 class="text-4xl font-bold text-center mb-24 capitalize ">Add fish</h2>
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
@@ -15,7 +16,12 @@
             </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full px-3">
+            <div class="w-full  px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                    Image
+                </label>
+            </div>
+            <div class="w-full py-5 px-3">
                 <img :src="form.image" alt="">
             </div>
             <div class="w-full px-3">
@@ -26,8 +32,6 @@
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="image" type="file" @change="changeImage">
                 <span class="text-red-500" v-if="errors.image">{{ errors.image }}</span>
-
-
             </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -74,8 +78,8 @@
                 <select v-model="form.category_id"
                     class="block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
 
-                    <option v-for="Category in Allcategories" :value="Category.id"
-                        :selected="[Category.id === form.category_id]">{{ Category.name }}
+                    <option v-for="Category in Allcategories" :key="Category.id" :value="Category.id"
+                        :selected="Category.id === form.category_id">{{ Category.name }}
                     </option>
                 </select>
                 <span class="text-red-500" v-if="errors.category_id">{{ errors.category_id }}</span>
@@ -87,7 +91,7 @@
                 </label>
                 <select v-model="form.buy_by_id"
                     class="block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-                    <option v-for="buyBy in AllbuyBy" :value="buyBy.id" :selected="buyBy.id === form.buy_by_id">{{
+                    <option v-for="buyBy in AllbuyBy" :key="buyBy.id" :value="buyBy.id" :selected="buyBy.id === form.buy_by_id">{{
                         buyBy.name }}</option>
                 </select>
                 <span class="text-red-500" v-if="errors.buy_by_id">{{ errors.buy_by_id }}</span>
@@ -184,13 +188,13 @@ onMounted(() => {
         try {
             let response = await axios.get('http://127.0.0.1:8000/api/fish/' + id);
             fish.value = response.data.data;
-            form.title = response.data.data.title;
-            form.image = response.data.data.image;
-            form.description = response.data.data.description;
-            form.price = response.data.data.price;
-            form.quantity = response.data.data.quantity;
-            form.category_id = response.data.data.category['id'];
-            form.buy_by_id = response.data.data.buy_by['id'];
+            form.title = fish.value.title;
+            form.image = fish.value.image;
+            form.description = fish.value.description;
+            form.price = fish.value.price;
+            form.quantity = fish.value.quantity;
+            form.category_id = fish.value.category['id'];
+            form.buy_by_id = fish.value.buy_by['id'];
             // console.log(response.data.data);
         } catch (error) {
             console.error(error);
