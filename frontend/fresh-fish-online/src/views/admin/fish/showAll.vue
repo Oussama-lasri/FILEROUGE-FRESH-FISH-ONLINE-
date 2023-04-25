@@ -68,14 +68,13 @@
                                     </td>
                                     <td
                                         class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                                        <p
-                                            class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
+                                        
                                         <div>
-                                            <img src="../assets/img/small-logos/logo-xd.svg"
+                                            <img :src="fish.image"
                                                 class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 ease-in-out rounded-full h-9 w-9"
                                                 alt="xd" />
                                         </div>
-                                        </p>
+                                       
                                     </td>
                                     <td
                                         class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
@@ -131,7 +130,7 @@
                                             <a @click="deleteFish(fish.id)">
 
                                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                                    class="icon icon-tabler icon-tabler-trash hover:text-red-500" width="24"
+                                                    class="icon icon-tabler cursor-pointer icon-tabler-trash hover:text-red-500" width="24"
                                                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                                     fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -168,7 +167,6 @@ async function allfish() {
     try {
         let response = await axios.get('http://127.0.0.1:8000/api/fish');
         fishes.value = response.data.data;
-        console.log(response.data.data);
     } catch (error) {
         console.error(error);
     }
@@ -192,23 +190,15 @@ async function deleteFish(id) {
                 .then(res => {
                     Swal.fire(
                         'Deleted!',
-                        res.data,
+                        res.data.data,
                         'success'
                     );
                     allfish();
                 });
-                console.log(response.data.data);
             } catch (error) {
                 console.error(error);
             }
-            const response = axios.put('http://127.0.0.1:8000/api/fish/' + id, form)
-                .then(res => {
-                    Swal.fire(
-                        'Deleted!',
-                        res.data,
-                        'success'
-                    )
-                })
+            
 
         }
     })

@@ -155,10 +155,10 @@
                                                     <path d="M16 5l3 3"></path>
                                                 </svg>
                                             </a>
-                                            <a @click="deleteFish(recipe.id)">
+                                            <a @click="deleteRecipe(recipe.id)">
 
                                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                                    class="icon icon-tabler icon-tabler-trash hover:text-red-500" width="24"
+                                                    class="icon icon-tabler icon-tabler-trash cursor-pointer hover:text-red-500" width="24"
                                                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                                     fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -202,7 +202,7 @@ async function allfish() {
 }
 allfish();
 
-async function deleteFish(id) {
+async function deleteRecipe(id) {
 
     Swal.fire({
         title: 'Are you sure?',
@@ -215,7 +215,7 @@ async function deleteFish(id) {
     }).then((result) => {
         if (result.isConfirmed) {
             try {
-                const response = axios.delete('http://127.0.0.1:8000/api/fish/' + id)
+                const response = axios.delete('http://127.0.0.1:8000/api/recipe/' + id)
                     .then(res => {
                         Swal.fire(
                             'Deleted!',
@@ -228,14 +228,7 @@ async function deleteFish(id) {
             } catch (error) {
                 console.error(error);
             }
-            const response = axios.put('http://127.0.0.1:8000/api/fish/' + id, form)
-                .then(res => {
-                    Swal.fire(
-                        'Deleted!',
-                        res.data,
-                        'success'
-                    )
-                })
+            
 
         }
     })

@@ -23,7 +23,7 @@
 </template>
   
 <script setup>
-import cardRecipe from './cardRecipe.vue';
+import cardRecipe from '../cardRecipe.vue';
 </script>
   
 <style></style>

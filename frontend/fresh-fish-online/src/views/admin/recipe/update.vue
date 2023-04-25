@@ -1,7 +1,7 @@
 <template>
     <!-- <navBar /> -->
 
-    <form @submit.prevent="addRecipe" class="mx-auto py-24 w-full max-w-lg">
+    <form @submit.prevent="updateRecipe" class="mx-auto py-24 w-full max-w-lg">
         <!-- <router-link to="" class="absolute left-36 top-24 bg-slate-200 py-3 rounded-md px-5">back</router-link> -->
         <h2 class="text-4xl font-bold text-center mb-24 capitalize ">Update recipe</h2>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -22,7 +22,8 @@
                 </label>
                 <select v-model="form.category"
                     class="block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-                    <option v-for="Category in Allcategories" :key="Category.id" :value="Category.id">{{ Category.name }}</option>
+                    <option v-for="Category in Allcategories" :selected="Category.id === form.category" :key="Category.id"
+                        :value="Category.id">{{ Category.name }}</option>
                 </select>
                 <span class="text-red-500" v-if="errors.category">{{ errors.category }}</span>
             </div>
@@ -32,10 +33,10 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                     Image
                 </label>
-            <div class="w-full py-5 px-3">
-                <img :src="form.image" alt="">
-            </div>
-            
+                <div class="w-full py-5 px-3">
+                    <img :src="form.image" alt="">
+                </div>
+
                 <input
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     type="file" @change="changeImage">
@@ -126,7 +127,7 @@
         </div>
         <div class="flex flex-wrap -mx-3">
             <div class="w-[40rem]">
-                <button class="bg-myblue ml-3 px-8  py-2 rounded-md text-white hover:bg-blue-900">add a fiish</button>
+                <button class="bg-myblue ml-3 px-8  py-2 rounded-md text-white hover:bg-blue-900">update recipe</button>
             </div>
         </div>
     </form>
@@ -207,7 +208,7 @@ onMounted(() => {
         try {
             let response = await axios.get('http://127.0.0.1:8000/api/recipe/' + id);
             recipe.value = response.data.data;
-            console.log(recipe.value);
+            console.log(form.category);
             form.title = recipe.value.title;
             form.dish_type = recipe.value.dish_type;
             form.image = recipe.value.image;
@@ -218,7 +219,7 @@ onMounted(() => {
             form.cuisine_type = recipe.value.cuisine_type;
             form.ingredients = recipe.value.ingredients;
             form.method = recipe.value.method;
-            form.category = recipe.value.category;
+            form.category = recipe.value.category['id'];
             // console.log(response.data.data);
         } catch (error) {
             console.error(error);
@@ -229,8 +230,9 @@ onMounted(() => {
 
 
 
-function update() {
-    if (!!form.title && !!form.image && !!form.quantity && !!form.price && !!form.category_id && !!form.buy_by_id) {
+function updateRecipe() {
+
+    if (!!form.title && !!form.dish_type && !!form.image && !!form.Serves && !!form.preparation_time && !!form.cooking_time && !!form.difficulty && !!form.cuisine_type && !!form.ingredients && !!form.method ) {
         try {
 
             const response = axios.put('http://127.0.0.1:8000/api/recipe/' + id, form)
@@ -241,8 +243,8 @@ function update() {
                         confirmButtonColor: '#3085d6',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            location.href = "http://localhost:5173/fish/showAll";
-                            console.log(res.data);
+                            location.href = "http://localhost:5173/recipe/showAll";
+                            
                         }
                     })
                         .catch(e => console.log(e))
@@ -251,42 +253,57 @@ function update() {
         } catch (error) {
             console.error(error);
         }
+
     } else {
-        alert('kjsdjk');
         if (!form.title) {
             errors.title = 'title is required'
         } else {
             errors.title = ''
         }
-        if (!form.image) {
-            errors.image = 'image is required'
+        if (!form.dish_type) {
+            errors.dish_type = 'dish type is required'
         } else {
-            errors.image = ''
+            errors.dish_type = ''
         }
-        if (!form.price) {
-            errors.price = 'price is required'
+        if (!form.Serves) {
+            errors.Serves = 'Serves is required'
         } else {
-            errors.price = ''
+            errors.Serves = ''
         }
-        if (!form.quantity) {
-            errors.quantity = 'quantity is required'
+        if (!form.preparation_time) {
+            errors.preparation_time = 'preparation time is required'
         } else {
-            errors.quantity = ''
+            errors.preparation_time = ''
         }
-        if (!form.description) {
-            errors.description = 'description is required'
+        if (!form.cooking_time) {
+            errors.cooking_time = 'cooking time is required'
         } else {
-            errors.description = ''
+            errors.cooking_time = ''
         }
-        if (!form.category_id) {
-            errors.category_id = 'category is required'
+        if (!form.difficulty) {
+            errors.difficulty = 'difficulty is required'
         } else {
-            errors.category_id = ''
+            errors.difficulty = ''
         }
-        if (!form.buy_by_id) {
-            errors.buy_by_id = 'buy_by is required'
+        if (!form.cuisine_type) {
+            errors.cuisine_type = 'cuisine type is required'
         } else {
-            errors.buy_by_id = ''
+            errors.cuisine_type = ''
+        }
+        if (!form.ingredients) {
+            errors.ingredients = 'ingredients  is required'
+        } else {
+            errors.ingredients = ''
+        }
+        if (!form.method) {
+            errors.method = 'method is required'
+        } else {
+            errors.method = ''
+        }
+        if (!form.category) {
+            errors.cuisine_type = 'category  is required'
+        } else {
+            errors.category = ''
         }
     }
 }

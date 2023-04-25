@@ -1,4 +1,5 @@
 <template>
+    
     <div class="m-10 flex justify-between ">
         <h2 class="text-2xl font-bold">Shopping Cart</h2>
         <button class="bg-myblue px-5 rounded-md text-white hover:bg-blue-900">clear cart</button>

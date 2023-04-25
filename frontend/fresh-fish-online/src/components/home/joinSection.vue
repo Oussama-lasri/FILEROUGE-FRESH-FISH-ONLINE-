@@ -30,8 +30,8 @@
 </template>
 
 <script setup>
-import iconPhone from './icons/iconPhone.vue';
-import iconMail from './icons/iconMail.vue';
+import iconPhone from '../icons/iconPhone.vue';
+import iconMail from '../icons/iconMail.vue';
 
 </script>
 

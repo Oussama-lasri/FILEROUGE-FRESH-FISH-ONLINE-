@@ -62,10 +62,10 @@
 </template>
 
 <script setup>
-import iconFacebook from './icons/iconFacebook.vue';
-import iconInstagrame from './icons/iconInstagrame.vue';
-import iconTwitter from './icons/iconTwitter.vue';
-import iconYoutube from './icons/iconYoutube.vue';
+import iconFacebook from '../icons/iconFacebook.vue';
+import iconInstagrame from '../icons/iconInstagrame.vue';
+import iconTwitter from '../icons/iconTwitter.vue';
+import iconYoutube from '../icons/iconYoutube.vue';
 </script>
 
 <style></style>

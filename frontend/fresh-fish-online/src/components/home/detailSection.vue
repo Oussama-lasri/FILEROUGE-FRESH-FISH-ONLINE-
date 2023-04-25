@@ -66,9 +66,9 @@
 </template>
 
 <script setup>
-import iconShopping from "./icons/iconShopping.vue";
-import cardFish from "./cardFish.vue";
-import nav3 from "./nav3.vue";
+import iconShopping from "../icons/iconShopping.vue";
+import cardFish from "../cardFish.vue";
+import nav3 from "../nav3.vue";
 
 </script>
 

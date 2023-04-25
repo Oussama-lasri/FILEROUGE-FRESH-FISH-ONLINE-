@@ -24,13 +24,13 @@
 </template>
 
 <script setup>
-import Button from './Button.vue';
+import Button from '../Button.vue';
 
 
 </script>
 
 <style>
-input {
+/* input {
     -webkit-appearance: none;
-}
+} */
 </style>

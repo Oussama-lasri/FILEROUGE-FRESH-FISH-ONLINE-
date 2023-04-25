@@ -61,10 +61,13 @@
 </template>
 
 <script setup>
-import FooterSection from '../../components/footerSection.vue';
+import FooterSection from '../../components/home/footerSection.vue';
 import navbar from '../../components/navBar.vue';
 import { reactive,ref } from 'vue';
 import axios from 'axios';
+import {useRouter} from 'vue-router';
+const router = useRouter();
+
 
 let form = reactive({
     firstName: '',
@@ -76,6 +79,8 @@ let form = reactive({
 
 const register = async () => await axios.post('http://127.0.0.1:8000/api/register', form)
     .then(response => {
+        localStorage.setItem('token',response.data.data.token);
+        router.push('/');
         console.log(response);
     })
 

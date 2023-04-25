@@ -21,7 +21,7 @@ class FishFactory extends Factory
             'description' => $this->faker->sentence(),
             'status' => $this->faker->sentence(),
             'quantity' => $this->faker->numberBetween($min = 1, $max = 100),
-            'image' => $this->faker->sentence(),
+            'image' => $this->faker->imageUrl(),
             'category_id' => '1',
             'buy_by_id' => '1',
         ];

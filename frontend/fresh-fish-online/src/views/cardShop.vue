@@ -10,7 +10,7 @@
 import navBar from '../components/navBar.vue';
 import nav3 from "../components/nav3.vue";
 import cardShop from '../components/cardShop.vue';
-import FooterSection from '../components/footerSection.vue';
+import FooterSection from '../components/home/footerSection.vue';
 
 </script>
 

@@ -16,7 +16,7 @@
 <script setup>
 import inputMessage from '../components/chat/inputMessage.vue';
 import messageContainer from '../components/chat/messageContainer.vue';
-import FooterSection from '../components/footerSection.vue';
+import FooterSection from '../components/home/footerSection.vue';
 import nav3 from '../components/nav3.vue';
 import navBar from '../components/navBar.vue';
 // import { RouterLink } from 'vue-router';
