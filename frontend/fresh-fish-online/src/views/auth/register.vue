@@ -80,6 +80,7 @@ let form = reactive({
 const register = async () => await axios.post('http://127.0.0.1:8000/api/register', form)
     .then(response => {
         localStorage.setItem('token',response.data.data.token);
+        localStorage.setItem('role',response.data.data.role);
         router.push('/');
         console.log(response);
     })

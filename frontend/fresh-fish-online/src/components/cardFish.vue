@@ -1,8 +1,8 @@
 <template>
     <div class="max-w-xs  bg-white  rounded-sm shadow dark:bg-gray-800 dark:border-gray-700">
-        <a href="#">
+        <router-link :to="'/details/'+fish.id">
             <img class="rounded-t-sm" :src="fish.image  " alt="" />
-        </a>
+        </router-link>
         <div class="p-5">
             <a href="#">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ fish.title }}</h5>
@@ -19,6 +19,7 @@
 
 <script setup>
 import iconShopping from "./icons/iconShopping.vue";
+import { RouterLink } from "vue-router";
 // import { defineProps } from 'vue';
 
 const props = defineProps({

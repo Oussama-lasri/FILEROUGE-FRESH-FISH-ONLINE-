@@ -1,7 +1,7 @@
 <template>
     <section class="content-center mx-5 my-24">
 
-        <div class="gap-5 inline-flex sm:flex-col items-center text-left ">
+        <div class="gap-5 flex md:flex-row sm:flex-col items-center text-left ">
             <div class="flex flex-col items-start w-[560px] gap-[34px]">
                 <p class="font-extrabold m-0 text-[32px] leading-[normal] text-[rgba(0,87,156,1)]">Ethical Sustainable</p>
                 <p class="text-xl font-normal text-black m-0 h-[180px] w-[560px] leading-[normal]">At Fish for Thought, we

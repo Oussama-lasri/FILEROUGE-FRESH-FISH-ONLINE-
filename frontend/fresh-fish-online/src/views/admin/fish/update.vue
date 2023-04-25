@@ -149,14 +149,6 @@ let form = reactive({
     category_id: '',
     buy_by_id: '',
     status: 'disponible'
-    // errors: {
-    //     title: null,
-    //     quantity: null,
-    //     price: null,
-    //     description: null,
-    //     category_id: null,
-    //     buy_by_id: null,
-    // }
 });
 console.log('1 =>'+ form.title);
 
@@ -202,22 +194,13 @@ onMounted(() => {
     }
     showFish()
 })
-console.log('2 =>'+form.title);
+
 
 
 function update() {
-    // console.log(form.title);
+
     if (!!form.title && !!form.image && !!form.quantity && !!form.price && !!form.category_id && !!form.buy_by_id) {
-        // const formData = new FormData();
-        // formData.append("title", form.title);
-        // formData.append("image", form.image);
-        // formData.append("quantity", form.quantity);
-        // formData.append("price", form.price);
-        // formData.append("description", form.description);
-        // formData.append("category_id", form.category_id);
-        // formData.append("buy_by_id", form.buy_by_id);
-        // formData.append("status", "test");
-        // console.log(formData);
+   
         try {
             
             const response = axios.put('http://127.0.0.1:8000/api/fish/' + id, form)

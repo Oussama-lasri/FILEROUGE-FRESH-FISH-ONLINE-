@@ -1,41 +1,66 @@
 <template>
-      <nav class="z-50">
-        <div class="bg-black text-gray-100 py-6 px-6 shadow md:flex justify-between items-center">
-            <div class="flex item-center">
-                <span class="text-white text-xl mr-1">
-                    fresh fish online
-                </span>
+    <nav class="z-50 text-center">
+        <div aria-label="menu nav" class="bg-gray-800 pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto  w-full z-20 top-0">
 
+            <div class="flex flex-wrap items-center">
+                <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
+                    <a href="#" aria-label="Home">
+                        <span class="text-xl pl-2"><i class="em em-grinning"></i></span>
+                    </a>
+                </div>
+
+                <div class="flex flex-1 md:w-1/3 justify-center md:justify-start text-white px-2">
+                    <span class="relative w-100">
+                        <input aria-label="search" type="search" id="search" placeholder="Search"
+                            class="w-full bg-gray-900 text-white transition border border-transparent focus:outline-none focus:border-gray-400 rounded py-3 px-2 pl-10 appearance-none leading-normal">
+                        <div class="absolute search-icon" style="top: 1rem; left: .8rem;">
+                            <svg class="fill-current pointer-events-none text-white w-4 h-4"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path
+                                    d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z">
+                                </path>
+                            </svg>
+                        </div>
+                    </span>
+                </div>
+
+                <div class="flex w-full pt-2 content-center justify-between md:w-1/3 md:justify-end">
+                    <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+                        <li class="flex-1 md:flex-none md:mr-3">
+                            <a class="inline-block py-2 px-4 text-white no-underline" href="#">Active</a>
+                        </li>
+                        <li class="flex-1 md:flex-none md:mr-3">
+                            <router-link to="/cardShop"
+                                class="inline-block  text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"><icon-shopping/>
+                            </router-link>
+                        </li>
+                        <!-- <router-link to="/fish/showAll"
+                            class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
+                            <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span
+                                class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Fishes</span>
+                        </router-link> -->
+                        <!-- <li class="flex-1 md:flex-none md:mr-3">
+                            <div class="relative inline-block">
+                                <div class="dropdown">
+                                    <button class="dropdown-btn text-white" @click="toggleDropdown">
+                                        select
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <ul class="dropdown-list absolute bg-white p-5" v-show="showDropdown">
+                                         <li v-for="(option, index) in options" :key="index" @click="selectOption(option)">test
+                                            
+                                        </li>
+                                        <li>teset</li>
+                                        <li>teset</li>
+                                        <li>teset</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </li> -->
+                    </ul>
+                </div>
             </div>
-            <div id="search-div" class="flex justify-center items-center">
-                <input id="search" class="h-10 rounded-2xl" type="text">
-                <div class="mx-5"><svg xmlns="http://www.w3.org/2000/svg"
-                        class="icon cursor-pointer icon-tabler icon-tabler-search" width="24" height="24"
-                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
-                        <path d="M21 21l-6 -6"></path>
-                    </svg></div>
-            </div>
-            <ul class="md:flex md:items-center">
-                <li class="md:mx-4">
-                    <a class="text-xl bg-white rounded-2xl py-2 px-8 text-black transition-opacity hover:text-gray-300"
-                        href="">login</a>
-                </li>
-                <li class="">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="icon icon-tabler icon-tabler-shopping-cart cursor-pointer hover:text-gray-500" width="24"
-                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                        <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                        <path d="M17 17h-11v-14h-2"></path>
-                        <path d="M6 5l14 1l-1 7h-13"></path>
-                    </svg>
-                </li>
-            </ul>
         </div>
         <div class="bg-myblue text-gray-100 py-3 px-6 shadow md:flex justify-center items-center hidden">
             <h3 class="mr-10 ">New &amp; Special Offers</h3>
@@ -59,10 +84,11 @@
     </nav>
 </template>
 
-<script>
-export default {
+<script setup>
+import iconShopping from './icons/iconShopping.vue'
+import { RouterLink } from "vue-router";
 
-}
+
 </script>
 
 <style scoped>

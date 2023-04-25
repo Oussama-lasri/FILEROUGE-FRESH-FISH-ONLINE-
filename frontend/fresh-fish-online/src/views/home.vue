@@ -4,7 +4,7 @@
     <icon-chat class="fixed text-myblue bottom-0 right-0" />
   </div>
   <FinderFish  />
-  <fishes :fishes="fishes" />
+  <fishes />
   <joinSection />
   <blogSection />
   <emailSection />

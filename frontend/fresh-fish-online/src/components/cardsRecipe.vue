@@ -1,15 +1,14 @@
 <template>
     <containtCards>
       <div v-for="recipe in recipes" :key="recipe.id">
-          <CardRecipe :recipe="recipe" />
+          <cardRecipe :recipe="recipe" />
       </div>
     </containtCards>
   </template>
   
   <script setup>
-  import CardRecipe from './cardFish.vue';
+  import cardRecipe from './cardRecipe.vue';
   import containtCards from './containtCards.vue';
-  
   import { ref , onMounted } from 'vue';
   import axios from 'axios';
   
@@ -26,6 +25,7 @@
       }
   }
   allRecipes();
+  console.log(recipes.value);
   
       
   </script>

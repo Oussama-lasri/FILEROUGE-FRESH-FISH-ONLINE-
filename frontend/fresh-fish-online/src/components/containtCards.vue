@@ -6,8 +6,7 @@
 </template>
 
 <script setup>
-import cardFish from '../components/cardFish.vue';
-import { ref , onMounted } from 'vue';
+
 
 
 
