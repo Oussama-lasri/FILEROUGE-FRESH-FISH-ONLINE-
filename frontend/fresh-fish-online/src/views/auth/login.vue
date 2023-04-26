@@ -63,7 +63,12 @@ const login = async() => await axios.post('http://127.0.0.1:8000/api/login',form
         // console.log(response.data.data.token);
         localStorage.setItem('token',response.data.data.token);
         localStorage.setItem('role',response.data.data.role);
-        router.push('/');
+        localStorage.setItem('name',response.data.data.name);
+        if(localStorage.getItem('role')=='admin'){
+            router.push('/dashboard');
+        }else{
+        router.push('/')
+    }
     }else{
         error.value = response.data.message;
     }

@@ -81,6 +81,8 @@ const register = async () => await axios.post('http://127.0.0.1:8000/api/registe
     .then(response => {
         localStorage.setItem('token',response.data.data.token);
         localStorage.setItem('role',response.data.data.role);
+        localStorage.setItem('name',response.data.data.name);
+        localStorage.setItem('user_id',response.data.data.user_id);
         router.push('/');
         console.log(response);
     })

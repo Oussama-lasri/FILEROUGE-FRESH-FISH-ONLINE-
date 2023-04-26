@@ -17,6 +17,8 @@ import updateFish from '../views/admin/fish/update.vue'
 import showAllRecipe from '../views/admin/recipe/showAll.vue'
 import addRecipe from '../views/admin/recipe/add.vue'
 import updateRecipe from '../views/admin/recipe/update.vue'
+import page403 from '../views/403.vue'
+import page404 from '../views/404.vue'
 // ****
 // state management
 import { useStore } from "../stores/usersStore";
@@ -40,7 +42,10 @@ const routes = [
         name: 'cardShop',
         component: cardShop,
         meta: {
-            requiresAuth: true
+            requiresAuth: true ,
+            requiresAdmin:true ,
+
+
         }
     },
     {
@@ -58,7 +63,8 @@ const routes = [
         name: 'checkout',
         component: checkout,
         meta: {
-            requiresAuth: true
+            requiresAuth:true ,
+            requiresAdmin:true ,
         }
     },
     {
@@ -86,7 +92,7 @@ const routes = [
         name: 'showAllFish',
         component: showAllFish,
         meta: {
-            // requiresAuth: true,
+            
             requiresAdmin:true ,
         }
     },
@@ -95,7 +101,7 @@ const routes = [
         name: 'addFish',
         component: addFish,
         meta: {
-            // requiresAuth: true,
+           
             requiresAdmin:true ,
         }
     },
@@ -137,11 +143,17 @@ const routes = [
             requiresAdmin:true ,
         }
     },
+    {
+        path: '/403',
+        name: '403',
+        component: page403,
+        
+    },
     // ***********
     {
         path: '/:catchAll(.*)',
         name:'404',
-        component: 404
+        component: page404
     }
 ]
 
@@ -158,18 +170,20 @@ router.beforeEach((to, from, next) => {
                 path: '/Login',
                 params: { nextUrl: to.fullPath }
             })
-        } else if (useStore().token != null && useStore().role == 'user') {
+        } else if (useStore().token != null) {
             next()
         }
     } else if(to.matched.some(record => record.meta.requiresAdmin) ) {
         if(useStore().token == null) {
             next({
                 path: '/Login',
-                params: { nextUrl: to.fullPath }
+                // params: { nextUrl: to.fullPath }
             })
         } else if (useStore().role  == 'admin') {
             next()
         }
+    }else{
+        next()
     }
      
 })

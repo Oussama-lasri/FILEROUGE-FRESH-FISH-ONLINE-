@@ -35,17 +35,27 @@
                     <li class="flex-1 md:flex-none md:mr-3">
                         <div class="relative inline-block">
                             <div class="dropdown">
-                                <button class="dropdown-btn" @click="toggleDropdown">
-                                    {{ selectedOption }}
-                                    <i class="fa fa-caret-down"></i>
+                                <button class="dropdown-btn flex flex-row text-white px-12" @click="toggleDropdown">
+                                    Admin
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-circle-chevron-down" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M15 11l-3 3l-3 -3"></path>
+                                        <path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0 -18z"></path>
+                                    </svg>
                                 </button>
-                                <ul class="dropdown-list absolute bg-white p-5" v-show="showDropdown">
-                                    <li v-for="(option, index) in options" :key="index" @click="selectOption(option)">
-                                        {{ option }}
+                                <ul class="dropdown-list absolute gap-4 flex flex-col bg-white p-5" v-show="showDropdown">
+                                    <li >
+                                        admin@gmail.com
+                                    </li>
+                                    <li >
+                                        log out
                                     </li>
                                 </ul>
                             </div>
-                            
+
                         </div>
                     </li>
                 </ul>
@@ -55,23 +65,19 @@
 </template>
 
 <script >
-    export default {
-  data() {
-    return {
-      showDropdown: false,
-      selectedOption: 'Select an option',
-      options: ['', 'Option 2', 'Option 3']
-    }
-  },
-  methods: {
-    toggleDropdown() {
-      this.showDropdown = !this.showDropdown;
+export default {
+    data() {
+        return {
+            showDropdown: false,
+            
+        }
     },
-    selectOption(option) {
-      this.selectedOption = option;
-      this.showDropdown = false;
+    methods: {
+        toggleDropdown() {
+            this.showDropdown = !this.showDropdown;
+        },
+       
     }
-  }
 }
 </script>
 

@@ -29,11 +29,11 @@
                         <li class="flex-1 md:flex-none md:mr-3">
                             <router-link to="/login" class="inline-block   bg-slate-50 px-5 py-2 rounded-md  text-black no-underline" >Login</router-link>
                         </li>
-                        <li class="flex-1 md:flex-none md:mr-3">
+                        <router-link to="/cardShop" class="flex-1 md:flex-none md:mr-3">
                             <router-link to="/cardShop"
                                 class="inline-block  text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"><icon-shopping/>
                             </router-link>
-                        </li>
+                        </router-link>
                         <!-- <router-link to="/fish/showAll"
                             class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
                             <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span

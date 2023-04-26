@@ -37,6 +37,7 @@ class AuthController extends Controller
         $success['token'] = $user->createToken('MyApp')->plainTextToken;
         $success['name'] = $data->firstName.' '.$data->lastName;
         $success['role'] = $data->role;
+        $success['user_id'] = $data->id;
 
         $response = [
             'success' => true,
@@ -55,6 +56,7 @@ class AuthController extends Controller
             $success['token'] = $user->createToken('MyApp')->plainTextToken;
             $success['role'] = $user->role;
             $success['name'] = $user->firstName.' '.$user->lastName;
+            $success['user_id'] = $user->id;
 
             $response = [
                 'success' => true,

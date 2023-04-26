@@ -11,6 +11,7 @@ use App\Http\Controllers\messageController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\customerController;
 use App\Http\Controllers\categorieController;
+use App\Http\Controllers\PannierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,10 @@ Route::apiResource('categorie', categorieController::class);
 Route::apiResource('buyBy', buyByController::class);
 Route::apiResource('fish', fishController::class);
 Route::apiResource('recipe', RecepieController::class);
+Route::apiResource('pannier', PannierController::class);
+Route::get('getProductUser/{User}', [PannierController::class, 'getProductUser']);
+Route::post('updateItem', [PannierController::class, 'updateItem']);
+Route::post('deleteItem', [PannierController::class, 'deleteItem']);
 
 // });
 

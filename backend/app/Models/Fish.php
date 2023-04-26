@@ -22,4 +22,9 @@ class Fish extends Model
     public function recipe(){
         return $this->belongsTo(Fish::class,'category_id','id');
     }
+    public function pannier(){
+        return $this->belongsTo(Fish::class,'fish_id','id');
+    }
+
+
 }
