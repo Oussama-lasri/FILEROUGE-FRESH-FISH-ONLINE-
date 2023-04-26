@@ -6,7 +6,7 @@
         
         <form @submit.prevent="login" class="flex mb-10 flex-col justify-center  items-center">
             <p v-if="error" class="text-red-500">{{ error }}</p>
-            <a href class="py-5  w-1/2 mx-auto text-sm text-gray-600 hover:text-gray-950">Don't have an account? Register here.</a>
+            <router-link to="/register" class="py-5  w-1/2 mx-auto text-sm text-gray-600 hover:text-gray-950">Don't have an account? Register here.</router-link>
             <div class="text-left justify-center mb-6">
             <div class="">
                 <label class="block text-gray-600 font-bold text-left mb-10 " for="email">
@@ -62,6 +62,7 @@ const login = async() => await axios.post('http://127.0.0.1:8000/api/login',form
     if(response.data.success){
         // console.log(response.data.data.token);
         localStorage.setItem('token',response.data.data.token);
+        localStorage.setItem('role',response.data.data.role);
         router.push('/');
     }else{
         error.value = response.data.message;

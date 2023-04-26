@@ -2,12 +2,12 @@ import { createPinia, defineStore, PiniaVuePlugin } from "pinia";
 
 export const useStore = defineStore("userStore", {
   state: () => ({
-    token: 'testest',
+    token: localStorage.getItem("token"),
     // userId: localStorage.getItem("id"),
-    // role: localStorage.getItem("role"),
+    role: localStorage.getItem("role"),
     user: {
-    //   name: localStorage.getItem("name"),
-    //   email: localStorage.getItem("email"),
+      name: localStorage.getItem("name"),
+      email: localStorage.getItem("email"),
     //   avatar: localStorage.getItem("avatar"),
     },
   }),

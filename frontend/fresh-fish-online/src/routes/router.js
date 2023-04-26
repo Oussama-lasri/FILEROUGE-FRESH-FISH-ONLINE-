@@ -18,8 +18,12 @@ import showAllRecipe from '../views/admin/recipe/showAll.vue'
 import addRecipe from '../views/admin/recipe/add.vue'
 import updateRecipe from '../views/admin/recipe/update.vue'
 // ****
+// state management
+import { useStore } from "../stores/usersStore";
+// ****************
 
 
+// console.log(useStore().token)
 const routes = [
     {
         path: '/',
@@ -34,7 +38,10 @@ const routes = [
     {
         path: '/cardShop',
         name: 'cardShop',
-        component: cardShop
+        component: cardShop,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/login',
@@ -49,7 +56,10 @@ const routes = [
     {
         path: '/checkout',
         name: 'checkout',
-        component: checkout
+        component: checkout,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/chat',
@@ -59,7 +69,12 @@ const routes = [
     {
         path: '/dashboard',
         name: 'dashboard',
-        component: dashboard
+        component: dashboard,
+        meta: {
+            requiresAdmin:true ,
+            
+        }
+
     },
     {
         path: '/table',
@@ -69,33 +84,58 @@ const routes = [
     {
         path: '/fish/showAll',
         name: 'showAllFish',
-        component: showAllFish
+        component: showAllFish,
+        meta: {
+            // requiresAuth: true,
+            requiresAdmin:true ,
+        }
     },
     {
         path: '/fish/add',
         name: 'addFish',
-        component: addFish
+        component: addFish,
+        meta: {
+            // requiresAuth: true,
+            requiresAdmin:true ,
+        }
     },
     {
         path: '/fish/update/:id',
         name: 'updateFish',
         component: updateFish,
+        meta: {
+            // requiresAuth: true,
+            requiresAdmin:true
+        }
     },
     // recipies 
     {
         path: '/recipe/showAll',
         name: 'showAllRecipe',
-        component: showAllRecipe
+        component: showAllRecipe,
+        meta: {
+            // requiresAuth: true,
+            requiresAdmin:true ,
+        }
     },
     {
         path: '/recipe/add',
         name: 'addRecipe',
-        component: addRecipe
+        component: addRecipe,
+        meta: {
+            // requiresAuth: true,
+            requiresAdmin:true ,
+            
+        }
     },
     {
         path: '/recipe/update/:id',
         name: 'updateRecipe',
-        component: updateRecipe
+        component: updateRecipe,
+        meta: {
+            // requiresAuth: true,
+            requiresAdmin:true ,
+        }
     },
     // ***********
     {
@@ -109,7 +149,27 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
-
-
-
 export default router
+
+router.beforeEach((to, from, next) => {
+    if(to.matched.some(record => record.meta.requiresAuth)) {
+        if(useStore().token == null ) {
+            next({
+                path: '/Login',
+                params: { nextUrl: to.fullPath }
+            })
+        } else if (useStore().token != null && useStore().role == 'user') {
+            next()
+        }
+    } else if(to.matched.some(record => record.meta.requiresAdmin) ) {
+        if(useStore().token == null) {
+            next({
+                path: '/Login',
+                params: { nextUrl: to.fullPath }
+            })
+        } else if (useStore().role  == 'admin') {
+            next()
+        }
+    }
+     
+})
