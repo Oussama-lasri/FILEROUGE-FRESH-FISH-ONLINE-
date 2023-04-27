@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\RecepieController;
 use App\Models\Customer;
 use App\Models\categorie;
 use Illuminate\Http\Request;
@@ -8,10 +7,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\fishController;
 use App\Http\Controllers\buyByController;
 use App\Http\Controllers\messageController;
+use App\Http\Controllers\PannierController;
+use App\Http\Controllers\RecepieController;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\customerController;
 use App\Http\Controllers\categorieController;
-use App\Http\Controllers\PannierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::apiResource('buyBy', buyByController::class);
 Route::apiResource('fish', fishController::class);
 Route::apiResource('recipe', RecepieController::class);
 Route::apiResource('pannier', PannierController::class);
+Route::apiResource('commande', CommandeController::class);
 Route::get('getProductUser/{User}', [PannierController::class, 'getProductUser']);
 Route::post('updateItem', [PannierController::class, 'updateItem']);
 Route::post('deleteItem', [PannierController::class, 'deleteItem']);

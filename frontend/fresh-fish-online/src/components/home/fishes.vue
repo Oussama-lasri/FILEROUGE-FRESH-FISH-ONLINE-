@@ -1,6 +1,6 @@
 <template>
   <section class="text-center relative my-8">
-    <img src="../assets/images/Bassfish.png" class="mx-auto my-16" alt="alt" srcset="">
+    <img src="../../assets/images/Bassfish.png" class="mx-auto my-16" alt="alt" srcset="">
     <div>
       <h2 class=" my-10 text-black text-4xl uppercase font-bold">Fresh off the boat</h2>
     </div>

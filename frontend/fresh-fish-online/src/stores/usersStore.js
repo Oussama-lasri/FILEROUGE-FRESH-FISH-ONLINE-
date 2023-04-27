@@ -10,8 +10,7 @@ export const useStore = defineStore("userStore", {
       role: localStorage.getItem("role"),
       user_id: localStorage.getItem("user_id"),
       cart: [],
-      total : '',
-      totalItem: '',
+      total : 0,
       user: {
         name: localStorage.getItem("name"),
         email: localStorage.getItem("email"),
@@ -25,6 +24,7 @@ export const useStore = defineStore("userStore", {
           "http://127.0.0.1:8000/api/getProductUser/" + this.user_id
         );
         this.cart = response.data.data;
+        this.getTotal()
         console.log(this.cart);
       } catch (error) {
         console.error(error);
@@ -133,6 +133,10 @@ export const useStore = defineStore("userStore", {
 
         }
     })
+    },
+    async getTotal(){
+      // console.log(typeof(this.cart[0].qty)) 
+      this.total = this.cart.reduce((total, item) => total + (parseInt(item.fish.price) * parseInt(item.qty)), 0);
     }
   },
 });

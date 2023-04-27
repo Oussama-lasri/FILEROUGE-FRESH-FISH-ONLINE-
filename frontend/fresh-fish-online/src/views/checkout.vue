@@ -3,7 +3,7 @@
         <div class="flex flex-col w-full px-0 mx-auto md:flex-row">
             <div class="flex flex-col md:w-full">
 
-                <form class="justify-center w-full mx-auto" method="post" action>
+                <form @submit.prevent="checkout"  class="justify-center w-full mx-auto" method="post" action>
                     <h2 class="mb-4 font-bold md:text-xl text-heading ">Customer information
                     </h2>
                     <div class="">
@@ -14,6 +14,7 @@
                                     Your Email *
                                 </label>
                                 <input
+                                v-model="form.email"
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                     id="grid-first-name" type="text" placeholder="" />
                             </div>
@@ -23,6 +24,7 @@
                                     Your Phone
                                 </label>
                                 <input
+                                v-model="form.phone"
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-last-name" type="Number" placeholder="" />
                             </div>
@@ -37,6 +39,7 @@
                                         First Name
                                     </label>
                                     <input
+                                        v-model="form.firstName"
                                         class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                                         id="grid-first-name" type="text" placeholder="" />
                                 </div>
@@ -46,6 +49,7 @@
                                         Last Name
                                     </label>
                                     <input
+                                        v-model="form.lastName"
                                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="grid-last-name" type="text" placeholder="" />
                                 </div>
@@ -57,6 +61,7 @@
                                         Adress
                                     </label>
                                     <textarea
+                                        v-model="form.adress"
                                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="grid-password" type="Email" rows="6" placeholder="Enter You Adress"></textarea>
                                 </div>
@@ -68,15 +73,12 @@
                                         City
                                     </label>
                                     <input
+                                        v-model="form.city"
                                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="grid-password" type="text" placeholder="Enter You City ">
                                 </div>
                             </div>
                         </div>
-                        
-                        
-
-                        
                         <div class="mt-4 flex justify-between">
                             <div class="">
                             <router-link to="/cardShop" class="w-fit  px-10 rounded-md cursor-pointer py-2"> Back To Cart </router-link>
@@ -93,55 +95,22 @@
                     <h2 class="text-xl font-bold">Order Summary
                     </h2>
                     <div class="mt-8">
-                        <div class="flex flex-col my-6 space-y-4">
+                        <div class="flex flex-col my-6 space-y-4" v-for="fish in useStore().cart" :key="fish.id">
                             
                             <div class="flex items-center justify-between space-x-4">
                                 <div>
-                                    <img src="../assets/images/fishCard.png" alt="image"
+                                    <img :src="fish.fish.image" alt="image"
                                         class="w-20">
                                 </div>
                                 <div>
-                                    <h2 class="text-xl font-bold">Title</h2>
                                     
-                                    <span class="text-red-600">Price</span> $20
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between space-x-4">
-                                <div>
-                                    <img src="../assets/images/fishCard.png" alt="image"
-                                        class="w-20">
-                                </div>
-                                <div>
-                                    <h2 class="text-xl font-bold">Title</h2>
+                                    <h2 class="text-xl font-bold">{{fish.fish.title}}</h2>
                                     
-                                    <span class="text-red-600">Price</span> $20
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between space-x-4">
-                                <div>
-                                    <img src="../assets/images/fishCard.png" alt="image"
-                                        class="w-20">
-                                </div>
-                                <div>
-                                    <h2 class="text-xl font-bold">Title</h2>
+                                    <span class="text-red-600 ">Price : </span>{{fish.fish.price}}$
+                                    <span class="text-red-600">Quantity : </span>{{fish.qty}}
                                     
-                                    <span class="text-red-600">Price</span> $20
                                 </div>
-                                <div>
+                                <div class="cursor-pointer" @click="useStore().remove(fish.fish_id)">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -155,19 +124,19 @@
                     
                     <div
                         class="flex items-center  w-full py-2 text-sm font-semibold border-t border-gray-300  lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                        Net Total<span class="ml-2">$10</span>
+                        Net Total<span class="ml-2">{{ useStore().total }} $</span>
                     </div>
                     <div
                         class="flex items-center  w-full  text-sm font-semibold  border-gray-300 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                        Delivery <span class="ml-2">$40</span>
+                        Delivery <span class="ml-2">$</span>
                     </div>
                     <div
                         class="flex items-center w-full py-2 text-sm font-semibold  border-gray-300  lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                        Shipping Tax<span class="ml-2">$10</span>
+                        Shipping Tax<span class="ml-2">$</span>
                     </div>
                     <div
                         class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                        Total<span class="ml-2">$50.00</span></div>
+                        Total<span class="ml-2">{{ useStore().total }}$</span></div>
                 </div>
             </div>
         </div>
@@ -176,6 +145,30 @@
 
 <script setup>
 import { RouterLink } from "vue-router";
+import { reactive } from "vue";
+import { useStore } from "../stores/usersStore";
+useStore().getItemsCard();
+
+let form = reactive({
+    email: '',
+    phone: '',
+    firstName: '',
+    lastName: '',
+    adress: '',
+    city: '',
+    errors: {
+        email: null,
+        phone: null,
+        firstName: null,
+        lastName: null,
+        adress: null,
+        city: null,
+    }
+});
+
+async function checkout(){
+    
+}
 
 
 </script>
