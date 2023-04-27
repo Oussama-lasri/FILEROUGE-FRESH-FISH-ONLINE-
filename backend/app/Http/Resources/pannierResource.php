@@ -18,6 +18,7 @@ class pannierResource extends JsonResource
         return [
             "fish_id" => $this->fish_id,
             "user_id" => $this->user_id,
+            "qty" => $this->qty,
             'fish' => Fish::find($this->fish_id)
         ];
     }

@@ -17,8 +17,8 @@ class FishFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(),
-            'price' => $this->faker->sentence(),
-            'description' => $this->faker->sentence(),
+            'price' => $this->faker->numberBetween($min = 1, $max = 1000),
+            'description' => $this->faker->word(),
             'status' => $this->faker->sentence(),
             'quantity' => $this->faker->numberBetween($min = 1, $max = 100),
             'image' => $this->faker->imageUrl(),

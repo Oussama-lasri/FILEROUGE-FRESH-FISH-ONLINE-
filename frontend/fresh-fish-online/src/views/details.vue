@@ -74,11 +74,11 @@ import {ref , onMounted, onBeforeMount} from "vue";
 import axios from 'axios';
 import { useRoute } from 'vue-router';
 
+
 const route = useRoute();
 const id = route.params.id;
 const fish = ref('');
 onBeforeMount(() => {
-   
     async function showFish() {
         try {
             let response = await axios.get('http://127.0.0.1:8000/api/fish/' + id);
@@ -89,9 +89,9 @@ onBeforeMount(() => {
         }
     }
     showFish()
+    
 })
 
-console.log(fish.value);
 </script>
 
 <style></style>

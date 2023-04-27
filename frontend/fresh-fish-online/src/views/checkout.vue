@@ -79,7 +79,7 @@
                         
                         <div class="mt-4 flex justify-between">
                             <div class="">
-                            <a class="w-fit  px-10 rounded-md cursor-pointer py-2"> Back To Cart </a>
+                            <router-link to="/cardShop" class="w-fit  px-10 rounded-md cursor-pointer py-2"> Back To Cart </router-link>
                         </div>
                         <div class="">
                             <button class="w-fit  px-10 rounded-md py-2 text-white bg-myblue hover:bg-blue-900">Continue To delivery</button>
@@ -174,10 +174,10 @@
     </div>
 </template>
 
-<script>
-export default {
+<script setup>
+import { RouterLink } from "vue-router";
 
-}
+
 </script>
 
 <style></style>

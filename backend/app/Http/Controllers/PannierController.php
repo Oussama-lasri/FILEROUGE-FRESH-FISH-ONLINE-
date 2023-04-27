@@ -73,6 +73,12 @@ class PannierController extends Controller
                 return response()->json(['message' => 'Item not found']);
             }
     }
+
+    public function clearCart($user_id)
+    {
+        pannier::where('user_id', $user_id)->delete();
+        return response()->json(['message' => 'Cart cleared successfully']);
+    }
     /**
      * Update the specified resource in storage.
      */

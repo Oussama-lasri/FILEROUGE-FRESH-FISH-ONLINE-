@@ -33,6 +33,7 @@ Route::apiResource('pannier', PannierController::class);
 Route::get('getProductUser/{User}', [PannierController::class, 'getProductUser']);
 Route::post('updateItem', [PannierController::class, 'updateItem']);
 Route::post('deleteItem', [PannierController::class, 'deleteItem']);
+Route::delete('clearCart/{user_id}', [PannierController::class, 'clearCart']);
 
 // });
 

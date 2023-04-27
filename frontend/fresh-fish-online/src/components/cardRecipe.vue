@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-xs  bg-white  rounded-sm shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="">
-            <img class="rounded-t-sm" :src="recipe.image" alt="" />
+            <img class="rounded-t-sm" :src="recipe.image" alt="fish" />
         </a>
         <div class="p-5">
             <a href="#">
@@ -44,7 +44,7 @@ const props = defineProps({
     required: true,
   },
 })
-console.log(useStore().token)
+
 </script>
 
 <style></style>

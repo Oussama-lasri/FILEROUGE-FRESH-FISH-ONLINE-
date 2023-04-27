@@ -24,9 +24,13 @@ import emailSection from '../components/home/emailSection.vue';
 import recipeSection from '../components/home/recipeSection.vue';
 import socialmediaSection from '../components/home/socialmediaSection.vue';
 import footerSection from '../components/home/footerSection.vue';
-import axios from 'axios';
+import { useStore } from "../stores/usersStore";
+import { onMounted } from "vue";
 
 
+onMounted(() => {
+    useStore().getItemsCard();
+})
 
 
 
