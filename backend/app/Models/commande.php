@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Fish;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class commande extends Model
 {
     use HasFactory;
-    // protected $table = 'fish';
-    // protected $fillable = ['title','price','description','quantity','image','status','category_id','buy_by_id'];
+    protected $table = 'commandes';
+    protected $fillable = ['firstName','lastName','email','phone','user_id','adress','total','city','status'];
+
+    public function fishes(){
+        return $this->belongsToMany(Fish::class);
+    }
 }

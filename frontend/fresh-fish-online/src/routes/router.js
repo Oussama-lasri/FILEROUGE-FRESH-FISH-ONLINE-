@@ -23,6 +23,10 @@ import page404 from '../views/404.vue'
 // state management
 import { useStore } from "../stores/usersStore";
 // ****************
+// commandes
+import commandes from '../views/admin/commande/allCommande.vue'
+
+//***********/
 
 
 // console.log(useStore().token)
@@ -86,6 +90,15 @@ const routes = [
         path: '/table',
         name: 'table',
         component: table
+    },
+    {
+        path: '/commandes',
+        name: 'commandes',
+        component: commandes,
+        meta: {
+            
+            requiresAdmin:true ,
+        }
     },
     {
         path: '/fish/showAll',

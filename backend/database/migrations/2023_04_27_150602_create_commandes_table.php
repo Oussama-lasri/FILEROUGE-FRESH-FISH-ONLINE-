@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users','id');
             $table->longText('adress');
             $table->string('city');
+
             $table->timestamps();
         });
     }

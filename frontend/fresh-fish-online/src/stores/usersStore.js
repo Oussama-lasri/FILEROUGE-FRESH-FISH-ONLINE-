@@ -109,7 +109,7 @@ export const useStore = defineStore("userStore", {
     async clearCart(){
       Swal.fire({
         title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        text: "You won't clear cart",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

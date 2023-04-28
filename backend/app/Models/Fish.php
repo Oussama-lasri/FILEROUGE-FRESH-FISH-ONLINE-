@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\commande;
 use App\Models\categorie;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,6 +25,9 @@ class Fish extends Model
     }
     public function pannier(){
         return $this->belongsTo(Fish::class,'fish_id','id');
+    }
+    public function commande(){
+        return $this->belongsToMany(commande::class,'fish_id','id');
     }
 
 

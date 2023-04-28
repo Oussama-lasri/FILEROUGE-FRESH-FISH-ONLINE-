@@ -13,6 +13,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\customerController;
 use App\Http\Controllers\categorieController;
+use App\Http\Controllers\CommandeFishController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,10 +33,13 @@ Route::apiResource('fish', fishController::class);
 Route::apiResource('recipe', RecepieController::class);
 Route::apiResource('pannier', PannierController::class);
 Route::apiResource('commande', CommandeController::class);
+Route::apiResource('commande_fishes', CommandeFishController::class);
 Route::get('getProductUser/{User}', [PannierController::class, 'getProductUser']);
 Route::post('updateItem', [PannierController::class, 'updateItem']);
 Route::post('deleteItem', [PannierController::class, 'deleteItem']);
 Route::delete('clearCart/{user_id}', [PannierController::class, 'clearCart']);
+Route::post('commande/accept/{id}', [CommandeController::class, 'accept']);
+Route::post('commande/refuse/{id}', [CommandeController::class, 'refuse']);
 
 // });
 
