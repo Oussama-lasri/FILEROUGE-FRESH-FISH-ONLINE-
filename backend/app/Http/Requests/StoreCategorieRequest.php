@@ -23,6 +23,7 @@ class StoreCategorieRequest extends FormRequest
     {
         return [
             'name' => ['required','min:3','max:20'],
+            'image' => ['required'],
         ];
     }
 }

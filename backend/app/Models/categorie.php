@@ -11,7 +11,7 @@ class categorie extends Model
 {
     use HasFactory;
     protected $table = 'categories';
-    protected $fillable = ['name'];
+    protected $fillable = ['name','image'];
 
     public function fishes(){
         return $this->hasMany(Fish::class,'category_id','id');
