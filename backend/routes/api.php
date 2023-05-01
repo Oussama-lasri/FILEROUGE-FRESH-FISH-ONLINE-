@@ -30,6 +30,8 @@ Route::apiResource('customer', customerController::class);
 Route::apiResource('categorie', categorieController::class);
 Route::apiResource('buyBy', buyByController::class);
 Route::apiResource('fish', fishController::class);
+Route::get('fishes', [fishController::class, 'pagination']);
+Route::get('fishes/showAll', [fishController::class, 'showAll']);
 Route::apiResource('recipe', RecepieController::class);
 Route::apiResource('pannier', PannierController::class);
 Route::apiResource('commande', CommandeController::class);

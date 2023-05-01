@@ -11,9 +11,27 @@ use App\Http\Resources\fishCollection;
 class fishController extends Controller
 {
 
-    public function index()
+    public function pagination()
+    {
+        $fishPerPage = 8;
+        $fishes = new fishCollection(fish::orderBy('created_at', 'desc')->simplePaginate($fishPerPage));
+        $pageCount = count(fish::all()) / $fishPerPage;
+        return response()->json([
+            'dataPaginate' => $fishes,
+            'page_count' => ceil($pageCount)
+        ], 200);
+    }
+
+    public function showAll()
     {
         return new fishCollection(fish::all());
+        
+    }
+    public function index()
+    {
+        $allFish = new fishCollection(fish::all());
+        $randomFish = $allFish->random(4);
+        return $randomFish ;
     }
 
 
@@ -34,7 +52,7 @@ class fishController extends Controller
 
     public function update(StoreFishRequest $request, fish $fish)
     {
-    //    dd($request);
+        //    dd($request);
         $fish->update($request->validated());
         return response()->json('updated fish');
     }

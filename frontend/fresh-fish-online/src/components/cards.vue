@@ -17,15 +17,16 @@ const fishes = ref(null)
 
 
 
-async function allfish() {
+async function randomFish() {
     try {
         let response = await axios.get('http://127.0.0.1:8000/api/fish');
-        fishes.value = response.data.data;
+        fishes.value = response.data;
+        console.log(fishes.value);
     } catch (error) {
         console.error(error);
     }
 }
-allfish();
+randomFish();
 
     
 </script>

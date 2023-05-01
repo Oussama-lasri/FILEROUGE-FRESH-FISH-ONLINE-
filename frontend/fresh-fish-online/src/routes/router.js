@@ -1,6 +1,9 @@
 import {createRouter, createWebHistory } from 'vue-router'
 import home from '../views/home.vue'
+import seeAllFishes from '../views/seeAllFishes.vue'
+import seeAllRecipes from '../views/seeAllRecipes.vue'
 import details from '../views/details.vue'
+import detailsRecipe from '../views/recipes/details.vue'
 import cardShop from '../views/cardShop.vue'
 import login from '../views/auth/login.vue'
 import register from '../views/auth/register.vue'
@@ -17,9 +20,17 @@ import updateFish from '../views/admin/fish/update.vue'
 import showAllRecipe from '../views/admin/recipe/showAll.vue'
 import addRecipe from '../views/admin/recipe/add.vue'
 import updateRecipe from '../views/admin/recipe/update.vue'
+// ****
+// category 
+import showAllCategory from '../views/admin/category/showAll.vue'
+import addCategory from '../views/admin/category/add.vue'
+import updateCategory from '../views/admin/category/update.vue'
+//*********/
+// *************
 import page403 from '../views/403.vue'
 import page404 from '../views/404.vue'
-// ****
+// *************
+
 // state management
 import { useStore } from "../stores/usersStore";
 // ****************
@@ -42,14 +53,28 @@ const routes = [
         component: details
     },
     {
+        path: '/recipe/details/:id',
+        name: 'detailsRecipe',
+        component: detailsRecipe
+    },
+    {
+        path: '/fishes/seeAll',
+        name: 'seeAllFishes',
+        component: seeAllFishes
+    },
+    {
+        path: '/recipes/seeAll',
+        name: 'seeAllRecipes',
+        component: seeAllRecipes
+    },
+    
+    {
         path: '/cardShop',
         name: 'cardShop',
         component: cardShop,
         meta: {
             requiresAuth: true ,
             requiresAdmin:true ,
-
-
         }
     },
     {
@@ -100,6 +125,35 @@ const routes = [
             requiresAdmin:true ,
         }
     },
+    // category route
+    {
+        path: '/category/showAll',
+        name: 'showAllCategory',
+        component: showAllCategory,
+        meta: {
+            
+            requiresAdmin:true ,
+        }
+    },
+    {
+        path: '/category/add',
+        name: 'addCategory',
+        component: addCategory,
+        meta: {
+           
+            requiresAdmin:true ,
+        }
+    },
+    {
+        path: '/category/update/:id',
+        name: 'updateCategory',
+        component: updateCategory,
+        meta: {
+            // requiresAuth: true,
+            requiresAdmin:true
+        }
+    },
+    // fish route
     {
         path: '/fish/showAll',
         name: 'showAllFish',
@@ -114,7 +168,6 @@ const routes = [
         name: 'addFish',
         component: addFish,
         meta: {
-           
             requiresAdmin:true ,
         }
     },

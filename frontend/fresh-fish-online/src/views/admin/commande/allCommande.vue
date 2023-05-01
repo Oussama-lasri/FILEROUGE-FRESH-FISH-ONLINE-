@@ -116,7 +116,7 @@
                                             </div>
                                         </div>
                                         <div class="flex gap-x-5 text-center" v-else>
-                                            <div class="c text-red-600">
+                                            <div class="text-red-600">
                                                 refused
                                             </div>
                                         </div>
