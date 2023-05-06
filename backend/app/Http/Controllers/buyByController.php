@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBuyByRequest;
 use App\Http\Resources\buyByCollection;
+use App\Http\Resources\buyByResource;
 use App\Models\BuyBy;
 use Illuminate\Http\Request;
 
@@ -22,30 +23,35 @@ class buyByController extends Controller
      */
     public function store(StoreBuyByRequest $request)
     {
-        //
+        BuyBy::create($request->validated());
+        return response()->json('created buy by');
     }
+    
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(BuyBy $buyBy)
     {
-        //
+        return new buyByResource($buyBy);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreBuyByRequest $request, BuyBy $buyBy)
     {
-        //
+        $buyBy->update($request->validated());
+        return response()->json('updated buyby');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(BuyBy $buyBy)
     {
-        //
+        $buyBy->delete();
+        return response()->json('deleted buyBy');
     }
 }

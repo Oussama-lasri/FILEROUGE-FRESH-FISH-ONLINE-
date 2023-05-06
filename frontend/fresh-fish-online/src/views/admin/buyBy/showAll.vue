@@ -3,8 +3,8 @@
         <navBar />
         <div class="w-full flex justify-between">
             <RouterLink to="/dashboard" class="text-black bg-gray-300 p-3 rounded m-6">go back</RouterLink>
-            <RouterLink to="/category/add" class="text-white bg-green-600 hover:bg-green-800 p-3 rounded m-6">add
-                Category</RouterLink>
+            <RouterLink to="/buyBy/add" class="text-white bg-green-600 hover:bg-green-800 p-3 rounded m-6">add
+                </RouterLink>
         </div>
         <div class="flex-none w-full max-w-full px-3">
             <div
@@ -22,23 +22,18 @@
                                         class=" py-3 pl-2 text-left font-bold uppercase align-middle bg-transparent border-b shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                         name</th>
                                     <th
-                                        class=" py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        image</th>
-
-
-                                    <th
                                         class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-solid shadow-none dark:border-white/40 dark:text-white tracking-none whitespace-nowrap">
                                         action
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="border-t" :key="category.id" v-for="category in categories">
+                            <tbody class="border-t" :key="buyBy.id" v-for="buyBy in getAll">
                                 <tr>
                                     <td
                                         class=" align-middle bg-transparent  border-b-0 whitespace-nowrap shadow-transparent">
                                         <div class="flex px-2">
                                             <div class="my-auto ml-4">
-                                                <h6 class="mb-0 text-sm leading-normal dark:text-white">#{{ category.id }}
+                                                <h6 class="mb-0 text-sm leading-normal dark:text-white">#{{ buyBy.id }}
                                                 </h6>
                                             </div>
                                         </div>
@@ -47,22 +42,12 @@
                                         class="p-2 align-middle text-left bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
                                         <p
                                             class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            {{ category.name }}</p>
+                                            {{ buyBy.name }}</p>
                                     </td>
-                                    <td class="p-2 align-middle bg-transparent border-b-0 shadow-transparent">
-                                        <div>
-                                            <img :src="category.image"
-                                                class="inline-flex items-center justify-center mr-2 text-sm text-white h-9 w-9"
-                                                alt="xd" />
-                                        </div>
-
-                                    </td>
-
-
                                     <td
                                         class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
                                         <div class="flex justify-center">
-                                            <a :href="'/category/update/' + category.id">
+                                            <a :href="'/buyBy/update/' + buyBy.id">
                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                     class="icon icon-tabler icon-tabler-edit hover:text-green-500"
                                                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
@@ -77,7 +62,7 @@
                                                     <path d="M16 5l3 3"></path>
                                                 </svg>
                                             </a>
-                                            <a @click="deleteCategory(category.id)">
+                                            <a @click="deleteBuyBy(buyBy.id)">
 
                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                     class="icon icon-tabler cursor-pointer icon-tabler-trash hover:text-red-500"
@@ -110,21 +95,21 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
-const categories = ref('')
+const getAll = ref('')
 
 
 
-async function allCategory() {
+async function AllbuyBy() {
     try {
-        let response = await axios.get('http://127.0.0.1:8000/api/categorie');
-        categories.value = response.data.data;
+        let response = await axios.get('http://127.0.0.1:8000/api/buyBy');
+        getAll.value = response.data.data;
     } catch (error) {
         console.error(error);
     }
 }
-allCategory();
+AllbuyBy();
 
-async function deleteCategory(id) {
+async function deleteBuyBy(id) {
 
     Swal.fire({
         title: 'Are you sure?',
@@ -137,14 +122,14 @@ async function deleteCategory(id) {
     }).then((result) => {
         if (result.isConfirmed) {
             try {
-                const response = axios.delete('http://127.0.0.1:8000/api/categorie/' + id)
+                const response = axios.delete('http://127.0.0.1:8000/api/buyBy/' + id)
                     .then(res => {
                         Swal.fire(
                             'Deleted!',
                             res.data.data,
                             'success'
                         );
-                        allCategory();
+                        AllbuyBy();
                     });
             } catch (error) {
                 console.error(error);

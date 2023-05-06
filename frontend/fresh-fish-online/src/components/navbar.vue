@@ -25,41 +25,24 @@
                 </div>
 
                 <div class="flex w-full pt-2 content-center justify-between md:w-1/3 md:justify-end">
-                    <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
-                        <li class="flex-1 md:flex-none md:mr-3">
-                            <router-link to="/login" class="inline-block   bg-slate-50 px-5 py-2 rounded-md  text-black no-underline" >Login</router-link>
-                        </li>
-                        <router-link to="/cardShop" class="flex-1 md:flex-none md:mr-3">
-                            <router-link to="/cardShop"
-                                class="inline-block  text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"><icon-shopping/>
-                            </router-link>
-                        </router-link>
-                        <!-- <router-link to="/fish/showAll"
-                            class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
-                            <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span
-                                class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Fishes</span>
-                        </router-link> -->
-                        <!-- <li class="flex-1 md:flex-none md:mr-3">
-                            <div class="relative inline-block">
-                                <div class="dropdown">
-                                    <button class="dropdown-btn text-white" @click="toggleDropdown">
-                                        select
-                                        <i class="fa fa-caret-down"></i>
-                                    </button>
-                                    <ul class="dropdown-list absolute bg-white p-5" v-show="showDropdown">
-                                         <li v-for="(option, index) in options" :key="index" @click="selectOption(option)">test
-                                            
-                                        </li>
-                                        <li>teset</li>
-                                        <li>teset</li>
-                                        <li>teset</li>
-                                    </ul>
-                                </div>
+    <ul v-if="useStore().token == null" class="list-reset flex justify-between flex-1 md:flex-none items-center">
+        <li class="flex-1 md:flex-none md:mr-3">
+            <router-link to="/login" class="inline-block bg-slate-50 px-5 py-2 rounded-md text-black no-underline">Login</router-link>
+        </li>
+        <router-link to="/cardShop" class="flex-1 md:flex-none md:mr-3">
+            <router-link to="/cardShop" class="inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"><icon-shopping /></router-link>
+        </router-link>
+    </ul>
+    <ul v-if="useStore().token != null" class="list-reset flex justify-between flex-1 md:flex-none items-center">
+        <li class="flex-1 md:flex-none md:mr-3">
+            <router-link to="/logout" class="inline-block bg-slate-50 px-5 py-2 rounded-md text-black no-underline">Logout</router-link>
+        </li>
+        <router-link to="/cardShop" class="flex-1 md:flex-none md:mr-3">
+            <router-link to="/cardShop" class="inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"><icon-shopping /></router-link>
+        </router-link>
+    </ul>
+</div>
 
-                            </div>
-                        </li> -->
-                    </ul>
-                </div>
             </div>
         </div>
         <div class="bg-myblue text-gray-100 py-3 px-6 shadow md:flex justify-center items-center hidden">
@@ -85,8 +68,11 @@
 </template>
 
 <script setup>
+import { useStore } from '../stores/usersStore';
 import iconShopping from './icons/iconShopping.vue'
 import { RouterLink } from "vue-router";
+import { onMounted , ref } from 'vue';
+
 
 
 </script>

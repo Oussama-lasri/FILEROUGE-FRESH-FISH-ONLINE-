@@ -26,6 +26,11 @@ import showAllCategory from '../views/admin/category/showAll.vue'
 import addCategory from '../views/admin/category/add.vue'
 import updateCategory from '../views/admin/category/update.vue'
 //*********/
+// BuyBy 
+import showAllBuyBy from '../views/admin/buyBy/showAll.vue'
+import addBuyBy from '../views/admin/buyBy/add.vue'
+import updateBuyBy from '../views/admin/buyBy/update.vue'
+//*********/
 // *************
 import page403 from '../views/403.vue'
 import page404 from '../views/404.vue'
@@ -127,11 +132,36 @@ const routes = [
     },
     // category route
     {
+        path: '/buyBy/showAll',
+        name: 'showAllBuyBy',
+        component: showAllBuyBy,
+        meta: {
+            requiresAdmin:true ,
+        }
+    },
+    {
+        path: '/buyBy/add',
+        name: 'adduyBy',
+        component: addBuyBy,
+        meta: {
+            requiresAdmin:true ,
+        }
+    },
+    {
+        path: '/buyBy/update/:id',
+        name: 'updateBuyBy',
+        component: updateBuyBy,
+        meta: {
+            // requiresAuth: true,
+            requiresAdmin:true
+        }
+    },
+    // category route
+    {
         path: '/category/showAll',
         name: 'showAllCategory',
         component: showAllCategory,
         meta: {
-            
             requiresAdmin:true ,
         }
     },
@@ -140,7 +170,6 @@ const routes = [
         name: 'addCategory',
         component: addCategory,
         meta: {
-           
             requiresAdmin:true ,
         }
     },

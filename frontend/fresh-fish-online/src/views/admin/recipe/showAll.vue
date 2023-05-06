@@ -2,7 +2,7 @@
     <section class="flex flex-wrap text-center container my-24 mx-auto">
         <div class="w-full flex justify-between">
             <a href="" class="text-black bg-gray-300 p-3 rounded m-6">go back</a>
-            <RouterLink to="/fish/add"><a href="" class="text-white bg-green-600 hover:bg-green-800 p-3 rounded m-6">add
+            <RouterLink to="/recipe/add"><a href="" class="text-white bg-green-600 hover:bg-green-800 p-3 rounded m-6">add
                     product</a></RouterLink>
         </div>
         <div class="flex-none w-full max-w-full px-3">
@@ -89,7 +89,7 @@
                                         class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
                                         <p
                                             class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            {{ recipe.category.name }}</p>
+                                            {{ recipe.category['name'] }}</p>
                                     </td>
                                     <td
                                         class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
@@ -184,11 +184,11 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios';
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
-const recipes = ref('')
+const recipes = ref(null)
 
 
 
-async function allfish() {
+async function allRecipes() {
     try {
         let response = await axios.get('http://127.0.0.1:8000/api/recipe');
         recipes.value = response.data.data;
@@ -197,7 +197,7 @@ async function allfish() {
         console.error(error);
     }
 }
-allfish();
+allRecipes();
 
 async function deleteRecipe(id) {
 
@@ -219,7 +219,7 @@ async function deleteRecipe(id) {
                             res.data,
                             'success'
                         );
-                        allfish();
+                        allRecipes();
                     });
                 console.log(response.data.data);
             } catch (error) {

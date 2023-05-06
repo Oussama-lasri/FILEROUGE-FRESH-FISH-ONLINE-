@@ -132,7 +132,6 @@ async function buyBy() {
     try {
         let response = await axios.get('http://127.0.0.1:8000/api/buyBy');
         AllbuyBy.value = response.data.data;
-        // console.log(response.data.data);
     } catch (error) {
         console.error(error);
     }
@@ -150,7 +149,7 @@ let form = reactive({
     buy_by_id: '',
     status: 'disponible'
 });
-console.log('1 =>'+ form.title);
+
 
 let errors = {
     title: null,
@@ -211,8 +210,8 @@ function update() {
                         confirmButtonColor: '#3085d6',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            location.href="http://localhost:5173/fish/showAll";
-                            console.log(res.data);
+                                location.href="http://localhost:5173/fish/showAll";
+                                console.log(res.data);
                         }
                     })
                         .catch(e => console.log(e))
@@ -222,7 +221,6 @@ function update() {
             console.error(error);
         }
     } else {
-        alert('kjsdjk');
         if (!form.title) {
             errors.title = 'title is required'
         } else {

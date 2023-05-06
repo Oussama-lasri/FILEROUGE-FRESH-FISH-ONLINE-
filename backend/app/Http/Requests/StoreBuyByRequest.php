@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Faker\Provider\Lorem;
+use Faker\Provider\Lorem;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreBuyByRequest extends FormRequest
@@ -22,7 +24,8 @@ class StoreBuyByRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required','min:3','max:20'],
+            'name' => ['required','max:20'],
         ];
     }
+    
 }

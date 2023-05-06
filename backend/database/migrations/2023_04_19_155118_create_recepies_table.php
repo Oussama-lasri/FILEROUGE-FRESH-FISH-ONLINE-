@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('cuisine_type');
             $table->longText('ingredients');
             $table->longText('method');
-            $table->integer('category');
+            $table->foreignId('category')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

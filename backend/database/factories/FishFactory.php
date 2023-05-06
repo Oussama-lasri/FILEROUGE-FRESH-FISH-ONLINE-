@@ -1,6 +1,9 @@
 <?php
 
 namespace Database\Factories;
+
+use App\Models\BuyBy;
+use App\Models\categorie;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,8 +25,8 @@ class FishFactory extends Factory
             'status' => $this->faker->sentence(),
             'quantity' => $this->faker->numberBetween($min = 1, $max = 100),
             'image' => $this->faker->imageUrl(),
-            'category_id' => '1',
-            'buy_by_id' => '1',
+            'category_id' => categorie::all()->random(),
+            'buy_by_id' => BuyBy::all()->random(),
         ];
     }
 }

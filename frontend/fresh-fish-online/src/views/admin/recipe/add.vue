@@ -195,9 +195,7 @@ function addRecipe() {
     console.log(form);
     if (!!form.title && !!form.dish_type && !!form.image && !!form.Serves && !!form.preparation_time && !!form.cooking_time &&
         !!form.difficulty && !!form.cuisine_type && !!form.ingredients && !!form.method && !!form.category) {
-        // console.log(!!form.title && !!form.dish_type && !!form.image && !!form.Serves && !!form.preparation_time && !!form.cooking_time &&
-        // !!form.difficulty && !!form.cuisine_type && !!form.ingredients && !!form.method && !!form.category);
-        //     alert('validated');
+        alert('tet');
         const formData = new FormData();
         formData.append("title", form.title);
         formData.append("dish_type", form.dish_type);
@@ -215,7 +213,6 @@ function addRecipe() {
 
 
         try {
-            alert('tet');
             const response = axios.post('http://127.0.0.1:8000/api/recipe', formData)
                 .then(res => {
                     Swal.fire({
@@ -224,7 +221,7 @@ function addRecipe() {
                         confirmButtonColor: '#3085d6',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            router.push('/fish/showAll')
+                            router.push('/recipe/showAll')
                         }
                     })
                     form.title= '';

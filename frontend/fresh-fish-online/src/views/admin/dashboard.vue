@@ -33,7 +33,7 @@
                                         </div>
                                         <div class="flex-1 text-right md:text-center">
                                             <h2 class="font-bold uppercase text-gray-600">Total Revenue</h2>
-                                            <p class="font-bold text-3xl">$3249 <span class="text-green-500"><i
+                                            <p class="font-bold text-3xl"><span class="text-green-500"><i
                                                         class="fas fa-caret-up"></i></span></p>
                                         </div>
                                     </div>
@@ -51,7 +51,7 @@
                                         </div>
                                         <div class="flex-1 text-right md:text-center">
                                             <h2 class="font-bold uppercase text-gray-600">Total Users</h2>
-                                            <p class="font-bold text-3xl">249 <span class="text-pink-500"><i
+                                            <p class="font-bold text-3xl"> <span class="text-pink-500"><i
                                                         class="fas fa-exchange-alt"></i></span></p>
                                         </div>
                                     </div>
@@ -69,7 +69,7 @@
                                         </div>
                                         <div class="flex-1 text-right md:text-center">
                                             <h2 class="font-bold uppercase text-gray-600">New Users</h2>
-                                            <p class="font-bold text-3xl">2 <span class="text-yellow-600"><i
+                                            <p class="font-bold text-3xl"><span class="text-yellow-600"><i
                                                         class="fas fa-caret-up"></i></span></p>
                                         </div>
                                     </div>
@@ -86,8 +86,8 @@
                                                     class="fas fa-server fa-2x fa-inverse"></i></div>
                                         </div>
                                         <div class="flex-1 text-right md:text-center">
-                                            <h2 class="font-bold uppercase text-gray-600">Server Uptime</h2>
-                                            <p class="font-bold text-3xl">152 days</p>
+                                            <h2 class="font-bold uppercase text-gray-600"></h2>
+                                            <p class="font-bold text-3xl"> </p>
                                         </div>
                                     </div>
                                 </div>
@@ -103,8 +103,8 @@
                                                     class="fas fa-tasks fa-2x fa-inverse"></i></div>
                                         </div>
                                         <div class="flex-1 text-right md:text-center">
-                                            <h2 class="font-bold uppercase text-gray-600">To Do List</h2>
-                                            <p class="font-bold text-3xl">7 tasks</p>
+                                            <h2 class="font-bold uppercase text-gray-600"></h2>
+                                            <p class="font-bold text-3xl"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -120,8 +120,8 @@
                                                     class="fas fa-inbox fa-2x fa-inverse"></i></div>
                                         </div>
                                         <div class="flex-1 text-right md:text-center">
-                                            <h2 class="font-bold uppercase text-gray-600">Issues</h2>
-                                            <p class="font-bold text-3xl">3 <span class="text-red-500"><i
+                                            <h2 class="font-bold uppercase text-gray-600"></h2>
+                                            <p class="font-bold text-3xl"><span class="text-red-500"><i
                                                         class="fas fa-caret-up"></i></span></p>
                                         </div>
                                     </div>
@@ -133,21 +133,7 @@
 
                         <div class="flex flex-row flex-wrap flex-grow mt-2">
 
-                            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                                <!--Graph Card-->
-                                <div class="bg-white border-transparent rounded-lg shadow-xl">
-                                    <div
-                                        class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                        <h class="font-bold uppercase text-gray-600">Graph</h>
-                                    </div>
-                                    <div class="p-5">
-                                        <canvas id="chartjs-7" class="chartjs" width="undefined"
-                                            height="undefined"></canvas>
-                                       
-                                    </div>
-                                </div>
-                                <!--/Graph Card-->
-                            </div>
+                            
 
                             <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                                 <!--Graph Card-->
@@ -195,69 +181,6 @@
                                 </div>
                                 <!--/Graph Card-->
                             </div>
-
-                            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                                <!--Table Card-->
-                                <div class="bg-white border-transparent rounded-lg shadow-xl">
-                                    <div
-                                        class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                        <h2 class="font-bold uppercase text-gray-600">Graph</h2>
-                                    </div>
-                                    <div class="p-5">
-                                        <table class="w-full p-5 text-gray-700">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left text-blue-900">Name</th>
-                                                    <th class="text-left text-blue-900">Side</th>
-                                                    <th class="text-left text-blue-900">Role</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td>Obi Wan Kenobi</td>
-                                                    <td>Light</td>
-                                                    <td>Jedi</td>
-                                                </tr>
-                                                <tr>
-                                                <td>Greedo</td>
-                                                <td>South</td>
-                                                <td>Scumbag</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Darth Vader</td>
-                                                <td>Dark</td>
-                                                <td>Sith</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <p class="py-2"><a href="#">See More issues...</a></p>
-
-                                </div>
-                            </div>
-                            <!--/table Card-->
-                        </div>
-
-                        <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                            <!--Advert Card-->
-                            <div class="bg-white border-transparent rounded-lg shadow-xl">
-                                <div
-                                    class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                                    <h2 class="font-bold uppercase text-gray-600">Advert</h2>
-                                </div>
-                                <div class="p-5 text-center">
-
-
-                                 
-
-
-                                </div>
-                            </div>
-                            <!--/Advert Card-->
-                        </div>
-
-
                     </div>
                 </div>
             </section>
